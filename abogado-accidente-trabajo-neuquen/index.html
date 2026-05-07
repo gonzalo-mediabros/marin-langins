@@ -7,8 +7,24 @@
   <title>Marín Pistachia | Accidentes de trabajo en Neuquén</title>
   <meta name="description"
     content="Somos abogados especialistas en accidentes laborales y reclamos a la ART con oficina en Neuquén. Sin adelantos. Cobramos solo si ganás." />
+  <!-- SEO -->
+  <link rel="canonical" href="https://www.marinpistachia.com/accidentes-trabajo-neuquen/" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Marín Pistachia Abogados" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.marinpistachia.com/accidentes-trabajo-neuquen/" />
+  <meta property="og:title" content="Marín Pistachia | Accidentes de trabajo en Neuquén" />
+  <meta property="og:description"
+    content="Somos abogados especialistas en accidentes laborales y reclamos a la ART con oficina en Neuquén. Sin adelantos. Cobramos solo si ganás." />
+  <meta property="og:image" content="imgs/marin-hero-neuquen.jpg" />
+  <meta property="og:locale" content="es_AR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Marín Pistachia | Accidentes de trabajo en Neuquén" />
+  <meta name="twitter:description"
+    content="Somos abogados especialistas en accidentes laborales y reclamos a la ART con oficina en Neuquén. Sin adelantos. Cobramos solo si ganás." />
+  <meta name="twitter:image" content="imgs/marin-hero-neuquen.jpg" />
   <link rel="icon" type="image/png" href="imgs/favicon.png" />
-
+  <!-- Fonts  -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -91,10 +107,23 @@
       background-color: #f8fafc;
     }
   </style>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+          'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-NKHB2P');</script>
+  <!-- End Google Tag Manager -->
 </head>
 
 <body class="bg-surface font-sans text-gray-800 antialiased selection:bg-brand selection:text-surface">
-
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKHB2P" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <!-- --------------- NAVBAR --------------- -->
   <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-brand/10 shadow-sm">
     <m-container class="flex items-center justify-between py-3">
@@ -694,24 +723,6 @@
     </m-container>
   </section>
 
-  <!-- --------------- REVIEWS --------------- -->
-  <!-- <section id="reviews" class="bg-surface py-20 lg:py-28">
-    <m-container>
-      <div class="mb-12 text-center">
-        <span class="text-sm font-bold text-cyan uppercase tracking-widest">Lo que dicen nuestros clientes</span>
-        <h2 class="mt-4 text-3xl font-extrabold text-brand md:text-4xl uppercase tracking-wide">
-          Más de 4.6 estrellas en Google
-        </h2>
-        <p class="mx-auto mt-4 max-w-xl text-lg text-gray-600">
-          Cientos de trabajadores neuquinos ya cobraron su indemnización con nosotros.
-        </p>
-      </div>
-
-      <div class='embedsocial-reviews' data-ref="bb159708b69e26d549266b214c6846b320f24bbb"></div>
-      <script>(function (d, s, id) { var js; if (d.getElementById(id)) { return; } js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/cdn/ht.js"; d.getElementsByTagName("head")[0].appendChild(js); }(document, "script", "EmbedSocialHashtagScript"));</script>
-    </m-container>
-  </section> -->
-
   <!-- --------------- CTA FINAL --------------- -->
   <section id="cta" class="relative overflow-hidden bg-brand py-24 text-center">
     <div class="absolute inset-0 bg-cover bg-center opacity-10 mix-blend-overlay">
@@ -803,50 +814,50 @@
 
   <!-- --------------- STATS COUNTER ANIMATION --------------- -->
   <script>
-      (function () {
-        function formatVal(val, decimals, thousands, prefix) {
-          let str;
-          if (decimals > 0) {
-            str = val.toFixed(decimals);
-          } else {
-            const rounded = Math.round(val);
-            str = thousands
-              ? rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, thousands)
-              : rounded.toString();
-          }
-          return (prefix || '') + str;
+    (function () {
+      function formatVal(val, decimals, thousands, prefix) {
+        let str;
+        if (decimals > 0) {
+          str = val.toFixed(decimals);
+        } else {
+          const rounded = Math.round(val);
+          str = thousands
+            ? rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, thousands)
+            : rounded.toString();
         }
+        return (prefix || '') + str;
+      }
 
-        function animateStat(el) {
-          const target = parseFloat(el.dataset.target);
-          const from = parseFloat(el.dataset.from ?? '0');
-          const decimals = parseInt(el.dataset.decimals ?? '0');
-          const thousands = el.dataset.thousands ?? '';
-          const prefix = el.dataset.prefix ?? '';
-          const duration = 1600;
-          const startTime = performance.now();
+      function animateStat(el) {
+        const target = parseFloat(el.dataset.target);
+        const from = parseFloat(el.dataset.from ?? '0');
+        const decimals = parseInt(el.dataset.decimals ?? '0');
+        const thousands = el.dataset.thousands ?? '';
+        const prefix = el.dataset.prefix ?? '';
+        const duration = 1600;
+        const startTime = performance.now();
 
-          function step(now) {
-            const progress = Math.min((now - startTime) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 4);
-            const current = from + (target - from) * eased;
-            el.textContent = formatVal(current, decimals, thousands, prefix);
-            if (progress < 1) requestAnimationFrame(step);
-          }
-          requestAnimationFrame(step);
+        function step(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 4);
+          const current = from + (target - from) * eased;
+          el.textContent = formatVal(current, decimals, thousands, prefix);
+          if (progress < 1) requestAnimationFrame(step);
         }
+        requestAnimationFrame(step);
+      }
 
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              animateStat(entry.target);
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.6 });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateStat(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.6 });
 
-        document.querySelectorAll('.stat-number').forEach((el) => observer.observe(el));
-      })();
+      document.querySelectorAll('.stat-number').forEach((el) => observer.observe(el));
+    })();
   </script>
 
   <!-- --------------- WHATSAPP BUTTON --------------- -->
