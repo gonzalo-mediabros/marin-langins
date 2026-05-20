@@ -1,0 +1,667 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Stats from "../components/Stats.astro";
+import SectorCard from "../components/SectorCard.astro";
+import PasoCard from "../components/PasoCard.astro";
+import LesionesSection from "../components/LesionesSection.astro";
+import FAQ from "../components/FAQ.astro";
+import CTAFinal from "../components/CTAFinal.astro";
+import Footer from "../components/Footer.astro";
+import WAButton from "../components/WAButton.astro";
+---
+
+<Layout
+  title="Abogados Accidentes de Trabajo Rosario | Consulta Gratis"
+  description="¿Sufriste un accidente laboral en el Gran Rosario? Reclamá la indemnización de tu ART con abogados especialistas. Oficina en Rosario, Santa Fe. Sin adelantos."
+  canonical="https://marinpistachia.com/abogado-accidente-trabajo-rosario/"
+  ogImage="https://marinpistachia.com/abogado-accidente-trabajo-rosario/imgs/marin-hero.jpg"
+  ogLocale="es_AR"
+>
+  <!-- Navbar -->
+  <Navbar
+    logoSrc="/abogado-accidente-trabajo-rosario/imgs/logo-marin.png"
+    logoAlt="Marín Pistachia Abogados"
+    waHref="https://wa.me/5493412255968?text=Quiero+saber+cu%C3%A1nto+me+corresponde"
+  />
+
+  <!-- Hero -->
+  <Hero
+    ciudad="Rosario"
+    h1="Accidente de trabajo en Rosario"
+    subtitulo="<strong>Te ayudamos a cobrar</strong> lo que te corresponde."
+    intro="Somos abogados especialistas en accidentes laborales y reclamos a la ART, con oficina en Rosario. Atendemos trabajadores de la industria, comercio, transporte, agro y salud en todo el Gran Rosario y sur de Santa Fe — desde Cañada de Gómez hasta Villa Constitución, San Lorenzo, Pérez y Funes. <strong>Sin adelantos. Cobramos solo si ganás.</strong>"
+    waHref="https://wa.me/5493412255968?text=Quiero+saber+cu%C3%A1nto+me+corresponde"
+    calcHref="https://www.marinpistachia.com/calculadora-indemnizacion-accidente-trabajo/"
+    heroImg="/abogado-accidente-trabajo-rosario/imgs/marin-hero.jpg"
+    heroImgAlt="Estudio de abogados en Rosario"
+    telefono="341 225-5968"
+    telefonoHref="tel:3412255968"
+    oficina="Rosario, Santa Fe — Lun a Vie 9 a 18hs"
+    trustItems={[
+      "Consulta gratuita",
+      "Sin adelantos",
+      "Trabajo a resultado",
+      "Oficina en Rosario",
+    ]}
+  />
+
+  <!-- Stats -->
+  <Stats
+    items={[
+      {
+        value: "+20",
+        label: "Años de experiencia",
+        target: 20,
+        from: 0,
+        prefix: "+",
+      },
+      { value: "0", label: "Adelantos requeridos", target: 0, from: 10 },
+      { value: "5", label: "Ciudades en Argentina", target: 5, from: 0 },
+      {
+        value: "4.9",
+        label: "Valoración en Google",
+        target: 4.9,
+        from: 4.0,
+        decimals: 1,
+        suffix: "star",
+      },
+    ]}
+  />
+
+  <!-- Sectores -->
+  <section id="sectores" class="py-20 lg:py-28">
+    <m-container>
+      <div class="mb-16 max-w-3xl">
+        <span class="text-sm font-bold text-cyan uppercase tracking-widest"
+          >Sectores laborales en Rosario</span
+        >
+        <h2
+          class="mt-4 text-3xl font-extrabold text-brand md:text-4xl lg:text-5xl uppercase tracking-wide"
+        >
+          Atendemos a trabajadores de todos los rubros del Gran Rosario
+        </h2>
+        <p class="mt-6 text-lg text-gray-600">
+          Rosario concentra una de las economías más diversificadas del país:
+          industria, agro, comercio, salud, transporte y servicios. Si trabajás
+          en cualquiera de estos rubros y tuviste un accidente o enfermedad por
+          tu trabajo, tenés derecho a reclamar una indemnización a la ART.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <SectorCard
+          icon="factory"
+          titulo="Industria y Manufactura"
+          descripcion="Operarios de plantas industriales, metalúrgicas, frigoríficos y aceiteras del cordón industrial. Amputaciones por maquinaria, hipoacusia por ruido, hernias de disco en líneas de producción y enfermedades respiratorias por exposición a polvos y químicos. El cinturón industrial Rosario–San Lorenzo–San Martín concentra una de las mayores siniestralidades del país."
+          zonas="San Lorenzo · Capitán Bermúdez · Granadero Baigorria · Pérez · Funes"
+          href="https://www.marinpistachia.com/accidentes-por-profesion/"
+          color="brand"
+        />
+        <SectorCard
+          icon="agriculture"
+          titulo="Agro y Agroindustria"
+          descripcion="Peones rurales, operarios de silos, plantas aceiteras, harineras y exportadoras. Accidentes con maquinaria agrícola, lesiones por carga de mercadería, hernias de disco por vibración de cuerpo entero, exposición a productos agroquímicos. Indemnizaciones por enfermedades profesionales del agro habitualmente rechazadas por la ART."
+          zonas="Cañada de Gómez · Casilda · Venado Tuerto · Firmat · Sur de Santa Fe"
+          href="https://www.marinpistachia.com/accidentes-por-profesion/"
+          color="cyan"
+        />
+        <SectorCard
+          icon="local_shipping"
+          titulo="Transporte y Logística"
+          descripcion="Camioneros de larga distancia con hernias de disco cervical y lumbar (Decreto 49/2014 las reconoce expresamente como enfermedad profesional). Choferes de colectivo, taxi y transporte urbano. Accidentes in itinere en accesos a la ciudad y autopista. Reclamos paralelos a ART y a aseguradoras de tránsito."
+          zonas="AU Rosario–BsAs · Acceso norte · Acceso sur · Circunvalación"
+          href="https://www.marinpistachia.com/accidentes-por-profesion/"
+          color="rosa"
+        />
+        <SectorCard
+          icon="storefront"
+          titulo="Comercio y Supermercados"
+          descripcion="Empleados de comercio, cadenas de supermercados, depósitos y logística. Síndrome del túnel carpiano en cajeras, hernias de disco en repositores, lumbalgia crónica en personal de depósito, lesiones en hombro por tareas repetitivas."
+          zonas="Centro · Pichincha · Echesortu · La Florida · zona sur"
+          href="https://www.marinpistachia.com/accidentes-por-profesion/"
+          color="brand"
+        />
+        <SectorCard
+          icon="construction"
+          titulo="Construcción"
+          descripcion="Caídas desde altura, aplastamientos, fracturas de columna, pelvis y miembros. Alta siniestralidad y derecho a indemnizaciones importantes."
+          zonas="Gran Rosario · zona Puerto Norte · barrios en crecimiento"
+          href="https://www.marinpistachia.com/accidentes-por-profesion/"
+          color="cyan"
+        />
+        <SectorCard
+          icon="local_hospital"
+          titulo="Salud y Educación"
+          descripcion="Enfermeros y kinesiólogos con lesiones de columna por movilización de pacientes. Médicos y odontólogos con patologías cervicales por postura. Docentes con nódulos vocales y patologías de columna. Exposición a agentes biológicos en sector salud."
+          zonas="Hospitales públicos · Clínicas privadas · Escuelas y nivel terciario"
+          href="https://www.marinpistachia.com/accidentes-por-profesion/"
+          color="rosa"
+        />
+      </div>
+    </m-container>
+  </section>
+
+  <!-- Comisiones Médicas -->
+  <section id="comisiones-medicas" class="bg-surface py-20 lg:py-28">
+    <m-container>
+      <div class="mb-16 text-center">
+        <span class="text-sm font-bold text-cyan uppercase tracking-widest"
+          >COMISIONES MÉDICAS Rosario y Zona</span
+        >
+        <h2
+          class="mt-4 text-3xl font-extrabold text-brand md:text-4xl uppercase tracking-wide"
+        >
+          ¿DÓNDE SE HACEN LOS TRÁMITES <br class="hidden sm:block" /> ANTE LA SRT
+          EN rosario y zona de influencia?
+        </h2>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
+          Para reclamar a la ART por un accidente o enfermedad profesional hay
+          que presentarse ante la Comisión Médica de la SRT correspondiente a tu
+          domicilio o lugar de trabajo.
+        </p>
+        <h4 class="mx-auto mt-4 max-w-2xl text-xl text-gray-600 font-bold">
+          Estas son todas las comisiones médicas y delegaciones de la provincia
+          de Santa Fe:
+        </h4>
+      </div>
+
+      <!-- Jurisdicción Rosario CM 7 -->
+      <div
+        class="mb-12 rounded-2xl border border-brand/20 bg-brand/5 p-6 md:p-8"
+      >
+        <div
+          class="mb-6 inline-flex items-center gap-2 rounded-full bg-brand/10 px-4 py-1.5 text-base font-bold text-brand"
+        >
+          <m-icon class="material-symbols-outlined text-base">circle</m-icon> JURISDICCIÓN
+          ROSARIO (CM 7)
+        </div>
+
+        <div class="mb-6">
+          <div class="rounded-xl border border-white bg-white p-5 shadow-sm">
+            <h3
+              class="text-xl font-extrabold text-brand flex items-center gap-1.5"
+            >
+              <m-icon class="material-symbols-outlined">location_on</m-icon> Comisión
+              Médica Nº 7 — Rosario
+            </h3>
+            <div class="mt-3 space-y-2 text-base text-gray-600">
+              <p>
+                <strong class="text-gray-800">Dirección:</strong> Salta 2602, Rosario,
+                Santa Fe
+              </p>
+              <p>
+                <strong class="text-gray-800">Horario:</strong> Lunes a viernes, 8
+                a 15hs
+              </p>
+              <p>
+                <strong class="text-gray-800">Sub-comisiones:</strong> CM 7 A, 7 B,
+                7 C y 7 D (todas en la misma sede)
+              </p>
+              <p>
+                <strong class="text-gray-800">Competencia:</strong> Arroyo Seco, Cañada
+                de Gomez, Casilda, Granadero Baigorria, Las Rosas, San Lorenzo, Villa
+                Constitución y Villa Gobernador Galvez. — tramita más del 73% de los
+                expedientes de la provincia
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="rounded-xl border border-white bg-white p-5 shadow-sm">
+            <h3
+              class="text-xl font-extrabold text-brand flex items-center gap-1.5"
+            >
+              <m-icon class="material-symbols-outlined">location_on</m-icon> ROSARIO
+              - Anexo Rosario
+            </h3>
+            <div class="mt-3 space-y-2 text-base text-gray-600">
+              <p>
+                <strong class="text-gray-800">Dirección:</strong> Presidente Roca
+                1015 (S2000CXU) - Rosario.
+              </p>
+              <p>
+                <strong class="text-gray-800">Horario:</strong> 8 a 15hs.
+              </p>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-white bg-white p-5 shadow-sm">
+            <h3
+              class="text-xl font-extrabold text-brand flex items-center gap-1.5"
+            >
+              <m-icon class="material-symbols-outlined">location_on</m-icon> Mesa
+              de Entradas en Tribunales de Rosario
+            </h3>
+            <div class="mt-3 space-y-2 text-base text-gray-600">
+              <p>
+                <strong class="text-gray-800">Dirección:</strong> Balcarce 1651, 2º
+                piso (edificio Tribunales), Rosario
+              </p>
+              <p>
+                <strong class="text-gray-800">Horario:</strong> Lunes a viernes, 8
+                a 15hs — atendida por el Colegio de Abogados de Rosario
+              </p>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-white bg-white p-5 shadow-sm">
+            <h3
+              class="text-xl font-extrabold text-brand flex items-center gap-1.5"
+            >
+              <m-icon class="material-symbols-outlined">location_on</m-icon> Delegación
+              San Lorenzo (CM 7)
+            </h3>
+            <div class="mt-3 space-y-2 text-base text-gray-600">
+              <p>
+                <strong class="text-gray-800">Competencia:</strong> mismas circunscripciones
+                que CM 7 — cubre el cordón industrial Rosario–San Lorenzo
+              </p>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-white bg-white p-5 shadow-sm">
+            <h3
+              class="text-xl font-extrabold text-brand flex items-center gap-1.5"
+            >
+              <m-icon class="material-symbols-outlined">location_on</m-icon> Delegación
+              Venado Tuerto (CM 7)
+            </h3>
+            <div class="mt-3 space-y-2 text-base text-gray-600">
+              <p>
+                <strong class="text-gray-800">Dirección:</strong> Av. España 504,
+                Venado Tuerto
+              </p>
+              <p>
+                <strong class="text-gray-800">Competencia:</strong> circunscripción
+                judicial Nº 3 "Venado Tuerto"
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JURISDICCIÓN SANTA FE CAPITAL (CM 40) - comentado por feedback del cliente
+      <div class="mb-12 rounded-2xl border border-cyan/20 bg-cyan/5 p-6 md:p-8">
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-cyan/10 px-4 py-1.5 text-base font-bold text-cyan">
+          <m-icon class="material-symbols-outlined text-base">circle</m-icon> JURISDICCIÓN SANTA FE CAPITAL (CM 40)
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="rounded-xl border border-white bg-white p-5 shadow-sm">
+            <h3 class="text-xl font-extrabold text-brand flex items-center gap-1.5">
+              <m-icon class="material-symbols-outlined">location_on</m-icon> Comisión Médica Nº 40 — Santa Fe Capital
+            </h3>
+            <div class="mt-3 space-y-2 text-base text-gray-600">
+              <p><strong class="text-gray-800">Dirección:</strong> Las Heras 2883, Santa Fe Capital</p>
+              <p><strong class="text-gray-800">Horario:</strong> Lunes a viernes, 8 a 15hs · Demanda espontánea 8 a 12hs</p>
+              <p><strong class="text-gray-800">Competencia:</strong> circunscripción judicial Nº 1 "Santa Fe"</p>
+            </div>
+          </div>
+          <div class="rounded-xl border border-white bg-white p-5 shadow-sm">
+            <h3 class="text-xl font-extrabold text-brand flex items-center gap-1.5">
+              <m-icon class="material-symbols-outlined">location_on</m-icon> Delegación Reconquista (CM 40)
+            </h3>
+            <div class="mt-3 space-y-2 text-base text-gray-600">
+              <p><strong class="text-gray-800">Dirección:</strong> Av. España 504 esq. Ludueña, Reconquista</p>
+              <p><strong class="text-gray-800">Competencia:</strong> circunscripción Nº 4 "Reconquista" (Vera, Villa Ocampo, Las Toscas)</p>
+            </div>
+          </div>
+          <div class="rounded-xl border border-white bg-white p-5 shadow-sm">
+            <h3 class="text-xl font-extrabold text-brand flex items-center gap-1.5">
+              <m-icon class="material-symbols-outlined">location_on</m-icon> Delegación Rafaela (CM 40)
+            </h3>
+            <div class="mt-3 space-y-2 text-base text-gray-600">
+              <p><strong class="text-gray-800">Dirección:</strong> Las Heras 2883, Rafaela</p>
+              <p><strong class="text-gray-800">Competencia:</strong> circunscripción Nº 5 "Rafaela"</p>
+            </div>
+          </div>
+          <div class="rounded-xl border border-white bg-white p-5 shadow-sm">
+            <h3 class="text-xl font-extrabold text-brand flex items-center gap-1.5">
+              <m-icon class="material-symbols-outlined">location_on</m-icon> Delegación Sunchales (CM 40)
+            </h3>
+            <div class="mt-3 space-y-2 text-base text-gray-600">
+              <p><strong class="text-gray-800">Dirección:</strong> San Martín 1022, Sunchales</p>
+              <p><strong class="text-gray-800">Competencia:</strong> parte de la circunscripción Nº 5 "Rafaela"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
+
+      <div
+        class="mt-4 rounded-lg bg-cyan/10 p-4 text-base font-medium text-cyan text-center max-w-2xl mx-auto mb-12"
+      >
+        💡 Santa Fe está adherida a la <strong>Ley 27.348</strong> (Ley provincial
+        14.003) — el paso por la Comisión Médica es obligatorio antes de iniciar una
+        demanda judicial en casos de accidentes de trabajo con incapacidad permanente.
+      </div>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a
+          href="https://www.marinpistachia.com/comisiones-medicas-srt/"
+          class="inline-flex items-center gap-2 rounded-lg bg-brand px-5 py-3 text-base font-bold text-white hover:bg-brand/90 transition-colors"
+        >
+          Ver listado completo de Comisiones Médicas →
+        </a>
+        <a
+          href="https://www.marinpistachia.com/tramites-srt/"
+          class="inline-flex items-center gap-2 rounded-lg bg-cyan px-5 py-3 text-base font-bold text-white hover:bg-cyan/90 transition-colors"
+        >
+          Ver guía de trámites ante la SRT →
+        </a>
+      </div>
+    </m-container>
+  </section>
+
+  <!-- Proceso -->
+  <section id="proceso" class="py-20 lg:py-28">
+    <m-container>
+      <div class="mb-16 text-center">
+        <span class="text-sm font-bold text-cyan uppercase tracking-widest"
+          >Cómo trabajamos</span
+        >
+        <h2
+          class="mt-4 text-3xl font-extrabold text-brand md:text-4xl uppercase tracking-wide"
+        >
+          El proceso es simple. <br class="hidden sm:block" /> Nosotros nos encargamos
+          de todo.
+        </h2>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
+          Desde la primera consulta hasta que cobrás tu indemnización, te
+          acompañamos en cada paso.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <PasoCard
+          numero={1}
+          titulo="Consulta gratuita"
+          descripcion="Analizamos tu caso sin costo. Por WhatsApp, teléfono o en nuestra oficina de Rosario. Te decimos si tenés derecho a cobrar y cuánto, sin compromiso."
+          color="brand"
+        />
+        <PasoCard
+          numero={2}
+          titulo="Reclamo a la ART"
+           descripcion="Presentamos el reclamo ante la Comisión Médica Nro. 7 de Rosario con toda la documentación necesaria. Si vivís en Villa Gobernador Gálvez, Arroyo Seco, Villa Constitución, San Lorenzo, Timbúes, Puerto Gral. San Martín, Fray Luis Beltrán, Capitán Bermúdez, gestionamos desde donde corresponda y nos ocupamos de tus traslados."
+          color="cyan"
+        />
+        <PasoCard
+          numero={3}
+          titulo="Audiencia médica"
+           descripcion="Te acompañamos a la junta médica para defender tu porcentaje de incapacidad real. Esta etapa es clave: la diferencia de solo 1% puede ser de millones."
+          color="brand"
+        />
+        <PasoCard
+          numero={4}
+          titulo="Cobrás"
+          descripcion="Una vez homologada la indemnización, cobrás directo en tu cuenta. Solo entonces cobramos honorarios. Sin adelantos, sin sorpresas."
+          color="rosa"
+        />
+      </div>
+    </m-container>
+  </section>
+
+  <!-- Lesiones -->
+  <LesionesSection
+    subtitulo="Lesiones y enfermedades más frecuentes"
+    titulo="¿Cuánto podés cobrar por tu lesión?"
+    descripcion="La indemnización depende de tu edad, sueldo y el porcentaje de incapacidad. Estas son las patologías más frecuentes que atendemos en Rosario y el Gran Rosario."
+    lesiones={[
+      {
+        id: "hernia-disco",
+        emoji: "💥",
+        titulo: "Hernia de disco",
+        descripcion:
+          "Muy frecuente en camioneros, operarios industriales y empleados de comercio. La ART suele rechazarla como 'degenerativa', pero con abogado y peritaje médico se reconoce.",
+        linkLabel: "Ver cuánto paga la ART",
+        linkHref:
+          "https://www.marinpistachia.com/news/accidentes-trabajo/art-hernia-disco/",
+      },
+      {
+        id: "tunel-carpiano",
+        emoji: "🤚",
+        titulo: "Síndrome del túnel carpiano",
+        descripcion:
+          "Muy común en cajeras, operarios de líneas de producción y trabajadores con tareas manuales repetitivas. Frecuente en comercio, supermercados e industria.",
+        linkLabel: "Ver cuánto paga la ART",
+        linkHref:
+          "https://www.marinpistachia.com/news/accidentes-trabajo/sindrome-tunel-carpiano/",
+      },
+      {
+        id: "manguito-rotador",
+        emoji: "💪",
+        titulo: "Manguito rotador",
+        descripcion:
+          "Lesión típica de operarios industriales, mecánicos y trabajadores con esfuerzos en altura. La ART minimiza el porcentaje; con abogado se reconoce lo que corresponde.",
+        linkLabel: "Ver cuánto paga la ART",
+        linkHref:
+          "https://www.marinpistachia.com/news/accidentes-trabajo/lesion-manguito-rotador/",
+      },
+      {
+        id: "amputacion-dedos",
+        emoji: "✋",
+        titulo: "Amputación de dedos",
+        descripcion:
+          "Muy frecuente en metalurgia y maquinaria industrial del cordón Rosario–San Lorenzo. Indemnizaciones elevadas según la cantidad de falanges y el dedo afectado.",
+        linkLabel: "Ver cuánto paga la ART",
+        linkHref:
+          "https://www.marinpistachia.com/news/accidentes-trabajo/amputacion-dedo-art/",
+      },
+      {
+        id: "fracturas",
+        emoji: "🦴",
+        titulo: "Fracturas",
+        descripcion:
+          "Caídas, golpes con objetos o maquinaria. Fractura de rótula, fémur, húmero, pelvis, calcáneo y vértebras. Frecuentes en construcción e industria.",
+        linkLabel: "Ver cuánto paga la ART",
+        chips: [
+          {
+            label: "Tibia y peroné",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-tibia-perone/",
+            srText: " — Ver cuánto paga la ART por fractura de tibia y peroné",
+          },
+          {
+            label: "Radio",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-radio-art/",
+            srText: " — Ver cuánto paga la ART por fractura de radio",
+          },
+          {
+            label: "Cúbito",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-cubito/",
+            srText: " — Ver cuánto paga la ART por fractura de cúbito",
+          },
+          {
+            label: "Húmero",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-humero/",
+            srText: " — Ver cuánto paga la ART por fractura de húmero",
+          },
+          {
+            label: "Dedo",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/art-fractura-dedo/",
+            srText: " — Ver cuánto paga la ART por fractura de dedo",
+          },
+          {
+            label: "Fémur",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-femur/",
+            srText: " — Ver cuánto paga la ART por fractura de fémur",
+          },
+          {
+            label: "Cadera / Pelvis",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-pelvis/",
+            srText: " — Ver cuánto paga la ART por fractura de cadera y pelvis",
+          },
+          {
+            label: "Calcáneo",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-de-calcaneo-cuanto-paga-la-art-2/",
+            srText: " — Ver cuánto paga la ART por fractura de calcáneo",
+          },
+          {
+            label: "Muñeca",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/indemnizacion-muneca/",
+            srText: " — Ver cuánto paga la ART por fractura de muñeca",
+          },
+          {
+            label: "Vértebra",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-vertebra/",
+            srText: " — Ver cuánto paga la ART por fractura de vértebra",
+          },
+        ],
+      },
+      {
+        id: "lumbalgia",
+        emoji: "🛌",
+        titulo: "Lumbalgia y lumbociatalgia",
+        descripcion:
+          "Dolor lumbar crónico por esfuerzo laboral. Muy frecuente en transportistas, repositores y empleados de depósito. La ART suele rechazarla como preexistencia.",
+        linkLabel: "Ver cuánto paga la ART",
+        linkHref:
+          "https://www.marinpistachia.com/news/accidentes-trabajo/lumbociatalgia-indemnizacion-art/",
+      },
+      {
+        id: "hipoacusia",
+        emoji: "👂",
+        titulo: "Hipoacusia",
+        descripcion:
+          "Pérdida auditiva por exposición crónica al ruido en plantas industriales. Es irreversible y reconocida como enfermedad profesional por el Decreto 658/96.",
+        linkLabel: "Ver cuánto paga la ART",
+        linkHref:
+          "https://www.marinpistachia.com/news/accidentes-trabajo/hipoacusia-art/",
+      },
+      {
+        id: "accidente-in-itinere",
+        emoji: "🚗",
+        titulo: "Accidente in itinere",
+        descripcion:
+          "Si te accidentaste yendo o volviendo del trabajo, la ART debe cubrirte. Frecuente en colectivos, motos y autopistas Rosario–Buenos Aires.",
+        linkLabel: "Ver cuánto paga la ART",
+        linkHref:
+          "https://www.marinpistachia.com/news/accidentes-trabajo/accidente-in-itinere/",
+      },
+    ]}
+  />
+
+  <!-- FAQ -->
+  <FAQ
+    items={[
+      {
+        pregunta:
+          "¿Qué pasa si la ART me dio el alta pero sigo con dolor?",
+        respuesta: `<p>Si la ART te dio el alta médica pero seguís con dolor, podés reclamar. El alta no significa necesariamente que estés curado ni que no tengas incapacidad. En estos casos se puede pedir una divergencia en el alta ante la Comisión Médica Nº 7 de Rosario, reclamar prestaciones médicas pendientes o iniciar un reclamo por incapacidad laboral. Lo importante es actuar rápido y revisar si quedaron secuelas.</p>`,
+      },
+      {
+        pregunta:
+          "¿Cuánto puedo cobrar por una lesión laboral en Rosario?",
+        respuesta: `<p>El monto de la indemnización por accidente de trabajo o enfermedad profesional en Rosario depende principalmente de tu salario, tu edad y el porcentaje de incapacidad. También influye cómo se calcula el ingreso base y si los sueldos fueron correctamente actualizados por RIPTE. Por eso dos trabajadores con lesiones parecidas pueden cobrar montos muy distintos. <a href="https://www.marinpistachia.com/calculadora-indemnizacion-accidente-trabajo/" target="_blank" rel="noopener noreferrer" class="underline font-semibold text-cyan hover:text-cyan/80">Nuestra calculadora online</a> sirve como estimación inicial, pero el monto final depende del caso concreto.</p>`,
+      },
+      {
+        pregunta:
+          "¿Tengo que pagar un abogado por adelantado para reclamar a la ART en Rosario?",
+        respuesta: `<p>En la mayoría de los casos, los abogados especializados en accidentes laborales en Rosario trabajamos a resultado, es decir, cobramos un porcentaje solo si el trabajador obtiene una indemnización. Esto permite iniciar el reclamo sin pagar gastos ni honorarios por adelantado. El honorario profesional se paga al final con el monto obtenido</p>`,
+      },
+      {
+        pregunta:
+          "¿Dónde tramita el reclamo si tuve un accidente de trabajo en Rosario?",
+        respuesta: `<p>Si trabajás o sufriste el accidente en Rosario o zonas cercanas, el reclamo suele tramitar ante la Comisión Médica Nº 7 de Rosario, ubicada en Salta 2602. Esta comisión interviene en casos de Rosario, Funes, Pérez, Roldán, Granadero Baigorria, Villa Gobernador Gálvez, Soldini, Arroyo Seco y el cordón San Lorenzo–Capitán Bermúdez–Puerto General San Martín.</p>`,
+      },
+      {
+        pregunta:
+          "¿Cuánto tarda un reclamo de ART en Rosario?",
+        respuesta: `<p>Un reclamo de ART en Rosario puede demorar según la complejidad médica del caso, los estudios necesarios y la carga de trabajo de la Comisión Médica Nº 7 de Rosario. Aunque existen plazos legales para dictaminar (60 días, prorrogables), en la práctica esos tiempos pueden extenderse. Si hay demora, puede analizarse la posibilidad de avanzar judicialmente.</p>`,
+      },
+      {
+        pregunta:
+          "¿La ART puede rechazar un accidente de trabajo o una enfermedad profesional?",
+        respuesta: `<p>Sí. La ART puede rechazar un accidente o enfermedad profesional, pero ese rechazo no siempre es correcto ni definitivo. En accidentes, suele discutir si ocurrió en ocasión del trabajo o en el trayecto laboral. En enfermedades, muchas veces sostiene que la patología es "preexistente", "degenerativa" o que no está vinculada con la tarea. Frente al rechazo, se puede reclamar ante la Comisión Médica Nº 7 de Rosario y, si corresponde, continuar en la Justicia.</p>`,
+      },
+      {
+        pregunta:
+          "¿Cuántos días tiene la ART para aceptar o rechazar un accidente?",
+        respuesta: `<p>La ART tiene 10 días desde la denuncia para aceptar o rechazar el accidente o enfermedad, con posibilidad de prorrogar ese plazo por otros 10 días. Si la ART no rechaza expresamente dentro del plazo legal, la contingencia puede considerarse aceptada. Por eso es importante conservar la denuncia, las notificaciones y toda la documentación médica.</p>`,
+      },
+      {
+        pregunta:
+          "¿La indemnización por accidente de trabajo o enfermedad profesional paga impuestos?",
+        respuesta: `<p>No. La indemnización por accidente de trabajo o enfermedad profesional no paga Impuesto a las Ganancias, porque no es un salario ni una ganancia común, sino una reparación por un daño sufrido en la salud del trabajador. Esto aplica a indemnizaciones cobradas en reclamos ante la SRT de Rosario como así también la obtenida por pronunciamiento judicial de los Tribunales de Rosario o el resto de la Provincia de Santa Fe.</p>`,
+      },
+      {
+        pregunta:
+          "¿La indemnización por accidente de trabajo o enfermedad profesional es embargable?",
+        respuesta: `<p>En principio, la indemnización por accidente de trabajo o enfermedad profesional tiene protección especial, porque repara un daño en la salud del trabajador. Si el banco retiene el dinero por un embargo, puede pedirse el levantamiento o la limitación, acreditando el origen indemnizatorio de los fondos. Puede haber excepciones, como deudas alimentarias, porque está en juego un bien jurídico superior.</p>`,
+      },
+      {
+        pregunta:
+          "¿Qué es una enfermedad profesional?",
+        respuesta: `<p>Una enfermedad profesional es una enfermedad causada o agravada por el trabajo, las tareas realizadas o las condiciones del ambiente laboral. En Argentina existe un listado de enfermedades profesionales, pero no es una lista cerrada: una enfermedad que no figure allí también puede ser reconocida como laboral si se demuestra su relación con el trabajo. En Rosario, estos reclamos pueden discutirse ante la ART, la Comisión Médica y, si corresponde, la Justicia.</p>`,
+      },
+    ]}
+  />
+
+  <!-- CTA Final -->
+  <CTAFinal
+    titulo="¿Tuviste un accidente laboral en Rosario o zona?"
+    subtitulo="No esperes más. El reclamo tiene un plazo de 2 años. Consultanos gratis ahora."
+    phones={[
+      { label: "341 225-5968", href: "tel:3412255968", icon: "call" },
+      {
+        label: "0800-888-7708",
+        href: "tel:08008887708",
+        icon: "support_agent",
+      },
+    ]}
+    links={[
+      {
+        label: "WhatsApp Rosario",
+        href: "https://wa.me/5493412255968?text=Quiero+saber+cu%C3%A1nto+me+corresponde",
+        icon: "simple-icons:whatsapp",
+        iconType: "iconify",
+      },
+      {
+        label: "Calculá tu indemnización",
+        href: "https://www.marinpistachia.com/calculadora-indemnizacion-accidente-trabajo/",
+        icon: "calculate",
+        iconType: "material",
+      },
+    ]}
+  />
+
+  <!-- Footer -->
+  <Footer
+    logoSrc="/abogado-accidente-trabajo-rosario/imgs/logo-marin.png"
+    logoAlt="Marín Pistachia Abogados"
+    copyright='© 2026 Marín Pistachia Abogados — Rosario, Santa Fe<br><span class="text-xs">Ignacio Marín — Matrícula Colegio de Abogados de Rosario Libro XXXVI, Folio 390; Matrícula Corte Suprema de Justicia de la Nación Folio 19 Tomo 401</span>'
+    socialLinks={[
+      {
+        icon: "simple-icons:facebook",
+        href: "https://www.facebook.com/mypabogados/",
+        label: "Facebook",
+      },
+      {
+        icon: "simple-icons:tiktok",
+        href: "https://www.tiktok.com/@marin.pistachia",
+        label: "TikTok",
+      },
+      {
+        icon: "simple-icons:x",
+        href: "https://twitter.com/myp_abogados",
+        label: "X (Twitter)",
+      },
+      {
+        icon: "simple-icons:instagram",
+        href: "https://www.instagram.com/marinpistachia11/",
+        label: "Instagram",
+      },
+      {
+        icon: "simple-icons:youtube",
+        href: "https://www.youtube.com/@MarinPistachiaAbogados",
+        label: "YouTube",
+      },
+    ]}
+  />
+
+  <!-- WA Button -->
+  <WAButton
+    href="https://wa.me/5493412255968?text=Quiero+saber+cu%C3%A1nto+me+corresponde"
+  />
+</Layout>

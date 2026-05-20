@@ -1,0 +1,63 @@
+---
+import LesionCard from "./LesionCard.astro";
+
+interface Chip {
+  label: string;
+  href: string;
+  srText?: string;
+}
+
+interface Lesion {
+  id: string;
+  emoji: string;
+  titulo: string;
+  descripcion: string;
+  linkLabel?: string;
+  linkHref?: string;
+  chips?: Chip[];
+}
+
+interface Props {
+  titulo: string;
+  subtitulo: string;
+  descripcion: string;
+  lesiones: Lesion[];
+}
+
+const { titulo, subtitulo, descripcion, lesiones } = Astro.props;
+---
+
+<section id="lesiones" class="relative bg-brand py-20 lg:py-28">
+  <div class="absolute inset-0 bg-cover bg-center opacity-5 mix-blend-luminosity pointer-events-none"></div>
+  <m-container>
+    <m-row class="flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
+      <m-col class="flex-1 lg:sticky lg:top-20">
+        <span class="text-sm font-bold text-[#20cde3] uppercase tracking-widest">{subtitulo}</span>
+        <h2 class="mt-4 text-3xl font-extrabold text-surface md:text-4xl lg:text-5xl uppercase tracking-wide">
+          {titulo}
+        </h2>
+        <p class="mt-6 text-lg text-surface/80 leading-relaxed">
+          {descripcion}
+        </p>
+      </m-col>
+
+      <m-col class="flex-[1.5] w-full">
+        <div class="grid grid-cols-1 gap-4">
+          {lesiones.map((lesion) => (
+            <LesionCard
+              id={lesion.id}
+              emoji={lesion.emoji}
+              titulo={lesion.titulo}
+              descripcion={lesion.descripcion}
+              variant={lesion.chips && lesion.chips.length > 0 ? "chips" : "simple"}
+              linkLabel={lesion.linkLabel}
+              linkHref={lesion.linkHref}
+              chipsLabel={lesion.linkLabel}
+              chips={lesion.chips}
+            />
+          ))}
+        </div>
+      </m-col>
+    </m-row>
+  </m-container>
+</section>

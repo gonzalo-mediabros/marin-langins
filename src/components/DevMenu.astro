@@ -1,0 +1,26 @@
+---
+const pages = [
+  { slug: 'abogado-accidente-trabajo-neuquen', label: 'Neuquén' },
+  { slug: 'abogado-accidente-trabajo-rosario', label: 'Rosario' },
+  { slug: 'abogado-accidente-trabajo-comodoro-rivadavia', label: 'Comodoro Rivadavia' },
+];
+const current = Astro.url.pathname;
+---
+
+{import.meta.env.DEV && (
+  <div style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#111;color:#fff;font-family:monospace;font-size:13px;padding:6px 12px;display:flex;align-items:center;gap:12px">
+    <span style="color:#ff0;font-weight:bold">DEV</span>
+    {pages.map(p => (
+      <a
+        href={`/${p.slug}`}
+        style={`
+          color: ${current.includes(p.slug) ? '#0f0' : '#fff'};
+          text-decoration: none;
+          padding: 2px 8px;
+          border-radius: 4px;
+          background: ${current.includes(p.slug) ? '#333' : 'transparent'};
+        `}
+      >{p.label}</a>
+    ))}
+  </div>
+)}

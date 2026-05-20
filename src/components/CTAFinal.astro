@@ -1,0 +1,78 @@
+---
+interface PhoneItem {
+  label: string;
+  href: string;
+  icon: string;
+}
+
+interface LinkItem {
+  label: string;
+  href: string;
+  icon: string;
+  iconType: 'material' | 'iconify';
+}
+
+interface Props {
+  titulo: string;
+  subtitulo: string;
+  phones: PhoneItem[];
+  links: LinkItem[];
+}
+
+const { titulo, subtitulo, phones, links } = Astro.props;
+---
+
+<section id="cta" class="relative overflow-hidden bg-brand py-24 text-center">
+  <div class="absolute inset-0 bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+
+  <m-container class="relative z-10">
+    <h2 class="mx-auto max-w-4xl text-3xl font-extrabold text-surface md:text-5xl lg:text-6xl uppercase tracking-wide">
+      {titulo}
+    </h2>
+    <p class="mx-auto mt-6 max-w-2xl text-lg text-surface/90 md:text-xl">
+      {subtitulo}
+    </p>
+
+    <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      {phones.map((phone, i) => (
+        i === 0 ? (
+          <a
+            href={phone.href}
+            target="_blank"
+            class="flex items-center gap-2 rounded-xl bg-rosa px-8 py-4 text-lg font-bold text-white shadow-lg shadow-rosa/40 transition-all hover:-translate-y-1 hover:bg-rosa/90 hover:shadow-xl cursor-pointer"
+          >
+            <m-icon class="material-symbols-outlined">{phone.icon}</m-icon>
+            {phone.label}
+          </a>
+        ) : (
+          <a
+            href={phone.href}
+            target="_blank"
+            class="flex items-center gap-2 rounded-xl border-2 border-white bg-transparent px-8 py-4 text-lg font-bold text-white transition-all hover:bg-white hover:text-brand cursor-pointer"
+          >
+            <m-icon class="material-symbols-outlined">{phone.icon}</m-icon>
+            {phone.label}
+          </a>
+        )
+      ))}
+    </div>
+
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-6 text-surface">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 font-bold hover:text-cyan transition-colors cursor-pointer"
+        >
+          {link.iconType === 'iconify' ? (
+            <iconify-icon icon={link.icon} width="20" height="20"></iconify-icon>
+          ) : (
+            <m-icon class="material-symbols-outlined">{link.icon}</m-icon>
+          )}
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </m-container>
+</section>

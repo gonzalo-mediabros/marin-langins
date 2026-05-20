@@ -1,0 +1,31 @@
+---
+import FAQItem from "./FAQItem.astro";
+
+interface FAQItemData {
+  pregunta: string;
+  respuesta: string;
+}
+
+interface Props {
+  items: FAQItemData[];
+}
+
+const { items } = Astro.props;
+---
+
+<section id="faq" class="bg-gray-50 py-20 lg:py-28">
+  <m-container>
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="text-sm font-bold text-cyan uppercase tracking-widest">Preguntas frecuentes</span>
+      <h2 class="mt-4 text-3xl font-extrabold text-brand md:text-4xl uppercase tracking-wide">
+        Todo lo que necesitás saber antes de empezar
+      </h2>
+    </div>
+
+    <div class="mx-auto mt-12 max-w-3xl flex flex-col gap-4">
+      {items.map((item) => (
+        <FAQItem pregunta={item.pregunta} respuesta={item.respuesta} />
+      ))}
+    </div>
+  </m-container>
+</section>

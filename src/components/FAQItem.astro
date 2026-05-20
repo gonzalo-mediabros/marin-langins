@@ -1,0 +1,16 @@
+---
+interface Props {
+  pregunta: string;
+  respuesta: string;
+}
+
+const { pregunta, respuesta } = Astro.props;
+---
+
+<details class="group rounded-xl bg-surface shadow-sm border border-brand/10 transition-colors hover:border-brand/20">
+  <summary class="flex cursor-pointer items-center justify-between p-6 list-none">
+    <h3 class="font-bold text-brand">{pregunta}</h3>
+    <m-icon class="material-symbols-outlined text-cyan shrink-0 ml-4 transition-transform group-open:rotate-180">expand_more</m-icon>
+  </summary>
+  <div class="px-6 pb-6 text-gray-600 leading-relaxed space-y-3" set:html={respuesta} />
+</details>

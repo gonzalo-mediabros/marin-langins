@@ -1,0 +1,144 @@
+---
+interface Props {
+  ciudad: string;
+  h1: string;
+  subtitulo: string;
+  intro?: string;
+  waHref: string;
+  calcHref: string;
+  heroImg: string;
+  heroImgAlt: string;
+  telefono: string;
+  telefonoHref: string;
+  oficina: string;
+  trustItems?: string[];
+}
+
+const {
+  ciudad,
+  h1,
+  subtitulo,
+  intro,
+  waHref,
+  calcHref,
+  heroImg,
+  heroImgAlt,
+  telefono,
+  telefonoHref,
+  oficina,
+  trustItems = [],
+} = Astro.props;
+
+const [direccion, horario] = oficina.split(' — ');
+---
+
+<section id="hero" class="relative overflow-hidden bg-surface py-16 lg:py-24">
+  <div class="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand/5 blur-3xl"></div>
+
+  <m-container class="relative z-10">
+    <m-row class="flex-col items-center gap-12 lg:flex-row lg:gap-16">
+
+      <!-- Text Content — segundo en mobile, primero en desktop -->
+      <m-col class="flex-1 flex flex-col items-start gap-6 order-2 lg:order-1">
+        <span class="inline-flex items-center gap-2 rounded-full bg-brand/10 px-4 py-2 text-sm font-bold tracking-wide text-brand uppercase">
+          <m-icon class="material-symbols-outlined text-base">location_on</m-icon>
+          Abogados en {ciudad}
+        </span>
+
+        <h1 class="text-4xl font-extrabold leading-tight text-brand md:text-5xl lg:text-5xl uppercase tracking-wide text-balance">
+          {h1}
+        </h1>
+
+        <p class="text-xl font-semibold text-cyan lg:text-3xl text-balance" set:html={subtitulo} />
+
+        {intro ? (
+          <p class="text-base leading-relaxed text-gray-600 md:text-lg" set:html={intro} />
+        ) : (
+          <p class="text-base leading-relaxed text-gray-600 md:text-lg">
+            Somos abogados especialistas en accidentes laborales y reclamos a la ART con oficina en {ciudad}. <strong>Sin adelantos. Cobramos solo si ganás.</strong>
+          </p>
+        )}
+
+        <div class="flex flex-col gap-3 sm:flex-row w-full mt-4">
+          <a
+            href={waHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-rosa px-8 py-4 text-base font-bold text-white shadow-lg shadow-rosa/40 transition-all hover:-translate-y-1 hover:bg-rosa/90 hover:shadow-xl hover:shadow-rosa/50 cursor-pointer text-balance"
+          >
+            <iconify-icon icon="simple-icons:whatsapp" width="20" height="20"></iconify-icon>
+            Consulta gratis por WhatsApp
+          </a>
+          <a
+            href={calcHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-brand bg-transparent px-8 py-4 text-base font-bold text-brand transition-all hover:bg-brand hover:text-white cursor-pointer"
+          >
+            <m-icon class="material-symbols-outlined">calculate</m-icon>
+            Calculá tu indemnización
+          </a>
+        </div>
+
+        {trustItems.length > 0 && (
+          <ul class="mt-4 flex flex-wrap items-center gap-4 text-sm font-medium text-gray-600">
+            {trustItems.map((item) => (
+              <li class="flex items-center gap-1">
+                <m-icon class="material-symbols-outlined text-cyan">check_circle</m-icon>
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
+      </m-col>
+
+      <!-- Image — primero en mobile, segundo en desktop -->
+      <m-col class="flex-1 w-full relative order-1 lg:order-2">
+        <div class="relative overflow-hidden rounded-3xl shadow-2xl">
+          <img
+            src={heroImg}
+            alt={heroImgAlt}
+            class="w-full object-cover h-125 lg:h-full lg:aspect-square"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand/90 to-transparent"></div>
+
+          <div class="absolute bottom-0 left-0 w-full p-6 text-surface">
+            <p class="mb-1 text-lg font-extrabold uppercase tracking-wide text-surface">Consultanos ahora</p>
+            <p class="mb-4 text-sm text-surface/80">Analizamos tu caso sin costo y te decimos si tenés derecho a cobrar.</p>
+
+            <!-- Botones en fila -->
+            <div class="flex gap-2 mb-3">
+              <a
+                href={telefonoHref}
+                class="flex items-center justify-center gap-1.5 rounded-lg bg-surface/20 backdrop-blur-sm px-4 py-2 text-sm font-bold text-surface hover:bg-surface/30 transition-colors"
+              >
+                <iconify-icon icon="simple-icons:whatsapp" width="16" height="16"></iconify-icon>
+                {telefono}
+              </a>
+              <a
+                href="tel:08008887708"
+                class="flex flex-col items-center justify-center rounded-lg bg-surface/20 backdrop-blur-sm px-4 py-2 text-center hover:bg-surface/30 transition-colors"
+              >
+                <span class="text-sm font-bold text-surface leading-tight">0800-888-7708</span>
+                <span class="text-xs text-surface/70 leading-tight">llamada gratuita</span>
+              </a>
+            </div>
+
+            <!-- Dirección y horario en una fila -->
+            <div class="flex items-center gap-3 flex-wrap">
+              <p class="flex items-center gap-1 text-xs text-surface/70">
+                <m-icon class="material-symbols-outlined" style="font-size: 14px;">location_on</m-icon>
+                {direccion}
+              </p>
+              <p class="flex items-center gap-1 text-xs text-surface/70">
+                <m-icon class="material-symbols-outlined" style="font-size: 14px;">schedule</m-icon>
+                {horario}
+              </p>
+            </div>
+          </div>
+        </div>
+      </m-col>
+
+    </m-row>
+  </m-container>
+</section>

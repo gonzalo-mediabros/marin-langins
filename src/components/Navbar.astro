@@ -1,0 +1,25 @@
+---
+interface Props {
+  logoSrc: string;
+  logoAlt: string;
+  waHref: string;
+  waLabel?: string;
+}
+
+const { logoSrc, logoAlt, waHref, waLabel = 'Consulta gratis' } = Astro.props;
+---
+
+<nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-brand/10 shadow-sm px-4">
+  <div class="max-w-[1400px] mx-auto flex items-center justify-between py-3">
+    <img src={logoSrc} alt={logoAlt} class="h-10 w-auto" />
+    <a
+      href={waHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 rounded-xl bg-rosa px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-rosa/30 transition-all hover:bg-rosa/90 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-rosa/40 cursor-pointer"
+    >
+      <iconify-icon icon="simple-icons:whatsapp" width="16" height="16"></iconify-icon>
+      {waLabel}
+    </a>
+  </div>
+</nav>

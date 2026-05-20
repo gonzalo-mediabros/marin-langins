@@ -1,0 +1,90 @@
+---
+interface StatItem {
+  value: string;
+  label: string;
+  target: number;
+  from?: number;
+  decimals?: number;
+  thousands?: string;
+  prefix?: string;
+  suffix?: string;
+}
+
+interface Props {
+  items: StatItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section id="stats" class="border-y border-brand/10 bg-surface py-12">
+  <m-container>
+    <div class="grid grid-cols-2 gap-8 text-center md:grid-cols-5 lg:gap-12 md:divide-x md:divide-brand/10">
+      {items.map((item) => (
+        <div class="flex flex-col items-center justify-center">
+          <span class="text-4xl font-extrabold text-brand lg:text-5xl flex items-center">
+            <span
+              class="stat-number"
+              data-target={item.target}
+              data-from={item.from ?? 0}
+              data-decimals={item.decimals ?? 0}
+              data-thousands={item.thousands ?? ''}
+              data-prefix={item.prefix ?? ''}
+            >{item.value}</span>
+            {item.suffix && (
+              <m-icon class="material-symbols-outlined text-rosa text-3xl">{item.suffix}</m-icon>
+            )}
+          </span>
+          <span class="mt-2 text-xs font-bold text-gray-500 uppercase tracking-widest">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  </m-container>
+</section>
+
+<script>
+  (function () {
+    function formatVal(val: number, decimals: number, thousands: string, prefix: string): string {
+      let str: string;
+      if (decimals > 0) {
+        str = val.toFixed(decimals);
+      } else {
+        const rounded = Math.round(val);
+        str = thousands
+          ? rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, thousands)
+          : rounded.toString();
+      }
+      return (prefix || '') + str;
+    }
+
+    function animateStat(el: HTMLElement) {
+      const target = parseFloat(el.dataset.target ?? '0');
+      const from = parseFloat(el.dataset.from ?? '0');
+      const decimals = parseInt(el.dataset.decimals ?? '0');
+      const thousands = el.dataset.thousands ?? '';
+      const prefix = el.dataset.prefix ?? '';
+      const duration = 1600;
+      const startTime = performance.now();
+
+      function step(now: number) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        const current = from + (target - from) * eased;
+        el.textContent = formatVal(current, decimals, thousands, prefix);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateStat(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    document.querySelectorAll('.stat-number').forEach((el) => observer.observe(el));
+  })();
+</script>

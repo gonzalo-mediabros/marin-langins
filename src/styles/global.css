@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* ===========================
+   THEME TOKENS
+   =========================== */
+@theme {
+  /* Colors */
+  --color-brand: #382f71;
+  --color-cyan: #018292;
+  --color-rosa: #c11672;
+  --color-azul: #00198a;
+  --color-surface: #ffffff;
+
+  /* Typography */
+  --font-sans: "Inter", sans-serif;
+}
+
+/* ===========================
+   BASE
+   =========================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  color: #1f2937;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--color-brand);
+  color: #fff;
+}
+
+/* ===========================
+   CUSTOM ELEMENTS
+   =========================== */
+m-container {
+  display: block;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+m-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+@media (width < 768px) {
+  m-row {
+    flex-direction: column;
+  }
+}
+
+m-col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+}
+
+/* ===========================
+   WA BUTTON
+   =========================== */
+.wa-button {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wa-button:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 12px rgba(37, 211, 102, 0.4));
+}
+
+/* ===========================
+   SECTORES TEXTURE
+   =========================== */
+#sectores {
+  background-image: radial-gradient(circle, #382f7112 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-color: #f8fafc;
+}

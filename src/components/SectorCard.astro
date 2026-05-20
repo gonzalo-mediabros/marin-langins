@@ -1,0 +1,44 @@
+---
+interface Props {
+  icon: string;
+  titulo: string;
+  descripcion: string;
+  zonas: string;
+  href: string;
+  color: "brand" | "cyan" | "rosa";
+}
+
+const { icon, titulo, descripcion, zonas, href, color } = Astro.props;
+
+const borderColor = {
+  brand: "border-brand/10",
+  cyan: "border-cyan/10",
+  rosa: "border-rosa/10",
+};
+
+const bgColor = {
+  brand: "bg-brand",
+  cyan: "bg-cyan",
+  rosa: "bg-rosa",
+};
+
+const zonaColor = {
+  brand: "text-brand/70",
+  cyan: "text-cyan/80",
+  rosa: "text-rosa/80",
+};
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={`group flex flex-col rounded-2xl bg-surface p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl border ${borderColor[color]} cursor-pointer`}
+>
+  <div class={`mb-6 flex h-14 w-14 items-center justify-center rounded-xl ${bgColor[color]}`}>
+    <m-icon class="material-symbols-outlined text-3xl text-white">{icon}</m-icon>
+  </div>
+  <h3 class="mb-4 text-xl font-bold text-brand">{titulo}</h3>
+  <p class="mb-6 flex-1 text-gray-600">{descripcion}</p>
+  <span class={`text-sm font-bold ${zonaColor[color]}`}>{zonas}</span>
+</a>
