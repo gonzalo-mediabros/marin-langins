@@ -1,0 +1,66 @@
+---
+import reviews from "../data/reviews.json";
+
+interface Review {
+  nombre: string;
+  texto: string;
+  rating: number;
+  tiempo: string;
+}
+
+const allReviews: Review[] = reviews.slice(0, 9);
+---
+
+<section id="reviews" class="bg-white py-16 lg:py-24">
+  <m-container>
+    <div class="mb-12 text-center">
+      <span class="text-sm font-bold text-cyan uppercase tracking-widest"
+        >Testimonios de clientes</span
+      >
+      <h2
+        class="mt-4 text-3xl font-extrabold text-brand md:text-4xl uppercase tracking-wide"
+      >
+        Lo que dicen sobre nosotros
+      </h2>
+      <div class="mt-4 flex items-center justify-center gap-2">
+        <div class="flex">
+          {[1,2,3,4,5].map(() => (
+            <svg class="h-5 w-5 text-amber-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          ))}
+        </div>
+        <span class="font-bold text-brand">4.9 Valoración en Google</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        allReviews.map((review, index) => (
+          <div class="flex flex-col rounded-xl border border-gray-100 bg-surface p-6 shadow-sm transition-shadow hover:shadow-md">
+            <div class="mb-4 flex items-center gap-3">
+              <img
+                src={review.avatar}
+                alt={review.nombre}
+                class="h-10 w-10 shrink-0 rounded-full object-cover"
+                loading="lazy"
+              />
+              <div>
+                <p class="font-bold text-brand">{review.nombre}</p>
+                <p class="text-xs text-gray-500">{review.tiempo}</p>
+              </div>
+            </div>
+
+            <div class="mb-3 flex">
+              {[1,2,3,4,5].map(() => (
+                <svg class="h-4 w-4 text-amber-400" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              ))}
+            </div>
+
+            <p class="flex-1 text-sm text-gray-600">{review.texto}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    
+  </m-container>
+</section>
