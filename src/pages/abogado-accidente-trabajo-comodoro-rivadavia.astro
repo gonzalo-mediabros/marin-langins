@@ -11,14 +11,39 @@ import CTAFinal from "../components/CTAFinal.astro";
 import Footer from "../components/Footer.astro";
 import WAButton from "../components/WAButton.astro";
 import Reviews from "../components/Reviews.astro";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  name: "Marín Pistachia Abogados",
+  url: "https://www.marinpistachia.com/abogado-accidente-trabajo-comodoro-rivadavia/",
+  telephone: "+5492974166650",
+  image:
+    "https://www.marinpistachia.com/abogado-accidente-trabajo-comodoro-rivadavia/imgs/logo-marin.webp",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Fontana 1536",
+    addressLocality: "Comodoro Rivadavia",
+    addressRegion: "Chubut",
+    postalCode: "U9000BMB",
+    addressCountry: "AR",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
+};
 ---
 
 <Layout
   title="Abogados Accidentes de Trabajo Comodoro Rivadavia | Consulta Gratis"
   description="¿Trabajás en petróleo, pesca o construcción en la Cuenca del Golfo San Jorge? Reclamá tu indemnización a la ART. Abogados en Comodoro Rivadavia y Caleta Olivia. Sin adelantos."
-  canonical="https://marinpistachia.com/abogado-accidente-trabajo-comodoro-rivadavia/"
-  ogImage="https://marinpistachia.com/abogado-accidente-trabajo-comodoro-rivadavia/imgs/marin-hero-sur.webp"
+  canonical="https://www.marinpistachia.com/abogado-accidente-trabajo-comodoro-rivadavia/"
+  ogImage="https://www.marinpistachia.com/abogado-accidente-trabajo-comodoro-rivadavia/imgs/marin-hero-sur.webp"
   ogLocale="es_AR"
+  structuredData={structuredData}
 >
   <!-- Navbar -->
   <Navbar

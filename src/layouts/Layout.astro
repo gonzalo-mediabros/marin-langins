@@ -8,6 +8,7 @@ interface Props {
   canonical: string;
   ogImage?: string;
   ogLocale?: string;
+  structuredData?: Record<string, unknown>;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   canonical,
   ogImage = "",
   ogLocale = "es_AR",
+  structuredData,
 } = Astro.props;
 ---
 
@@ -46,8 +48,16 @@ const {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <!-- Structured data -->
+    {structuredData && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(structuredData)}
+      />
+    )}
+
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.webp" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

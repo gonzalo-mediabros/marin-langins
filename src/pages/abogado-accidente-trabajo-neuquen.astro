@@ -11,14 +11,38 @@ import CTAFinal from "../components/CTAFinal.astro";
 import Footer from "../components/Footer.astro";
 import WAButton from "../components/WAButton.astro";
 import Reviews from "../components/Reviews.astro";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  name: "Marín Pistachia Abogados",
+  url: "https://www.marinpistachia.com/abogado-accidente-trabajo-neuquen/",
+  telephone: "+5492994294696",
+  image:
+    "https://www.marinpistachia.com/abogado-accidente-trabajo-neuquen/imgs/logo-marin.webp",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Periodistas Neuquinos 308",
+    addressLocality: "Neuquén",
+    addressRegion: "Neuquén",
+    addressCountry: "AR",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
+};
 ---
 
 <Layout
   title="Abogados Accidentes de Trabajo Neuquén | Consulta Gratis"
   description="¿Sufriste un accidente laboral en Neuquén? Reclamá la indemnización de tu ART con nuestros abogados especialistas. Asesoramiento gratuito."
-  canonical="https://marinpistachia.com/abogado-accidente-trabajo-neuquen/"
-  ogImage="https://marinpistachia.com/abogado-accidente-trabajo-neuquen/imgs/marin-hero-sur.webp"
+  canonical="https://www.marinpistachia.com/abogado-accidente-trabajo-neuquen/"
+  ogImage="https://www.marinpistachia.com/abogado-accidente-trabajo-neuquen/imgs/marin-hero-sur.webp"
   ogLocale="es_AR"
+  structuredData={structuredData}
 >
   <!-- Navbar -->
   <Navbar
