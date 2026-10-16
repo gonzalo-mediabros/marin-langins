@@ -1,0 +1,927 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Stats from "../components/Stats.astro";
+import SectorCard from "../components/SectorCard.astro";
+import PasoCard from "../components/PasoCard.astro";
+import LesionesSection from "../components/LesionesSection.astro";
+import FAQ from "../components/FAQ.astro";
+import CTAFinal from "../components/CTAFinal.astro";
+import Footer from "../components/Footer.astro";
+import WAButton from "../components/WAButton.astro";
+import Reviews from "../components/Reviews.astro";
+
+const waHref =
+  "https://wa.me/5492646399804?text=Quiero+saber+cu%C3%A1nto+me+corresponde";
+const calcHref =
+  "https://www.marinpistachia.com/calculadora-indemnizacion-accidente-trabajo/";
+
+const mineriaTarjetas = [
+  {
+    icon: "front_loader",
+    titulo: "Operadores de mina",
+    texto:
+      "Choferes de camiones fuera de ruta, maquinistas de palas, cargadoras y perforadoras. Lesiones de columna por vibraciones, hombros y rodillas.",
+  },
+  {
+    icon: "factory",
+    titulo: "Planta y procesos",
+    texto:
+      "Operarios de trituración, lixiviación y planta. Atrapamientos, amputaciones, quemaduras y exposición a sustancias químicas.",
+  },
+  {
+    icon: "handyman",
+    titulo: "Mantenimiento",
+    texto:
+      "Mecánicos, soldadores y electricistas. Lesiones de manguito rotador, fracturas, aplastamientos y riesgo eléctrico.",
+  },
+  {
+    icon: "engineering",
+    titulo: "Contratistas y servicios",
+    texto:
+      "Personal de campamento, catering, limpieza, vigilancia, transporte de personal y construcción de proyectos. Mismos derechos que el personal de la minera.",
+  },
+  {
+    icon: "explore",
+    titulo: "Exploración",
+    texto:
+      "Perforistas, ayudantes y geólogos en campañas de alta montaña. Caídas, vuelcos y accidentes en caminos de cordillera.",
+  },
+  {
+    icon: "landscape",
+    titulo: "Caleras y canteras",
+    texto:
+      "Trabajadores de hornos, molienda y canteras. Enfermedades respiratorias por polvo, hipoacusia y lesiones por carga.",
+  },
+];
+
+const mineriaZonas = ["Iglesia", "Jáchal", "Calingasta", "Ullum", "Sarmiento"];
+
+const mineriaSaber = [
+  {
+    titulo: "Tu sueldo completo tiene que entrar en el cálculo.",
+    texto:
+      "La indemnización se calcula sobre el ingreso base, que debe incluir todos los conceptos que cobrás: adicionales por altura, zona, turno y horas extra. Si la ART toma un sueldo menor, la indemnización baja. Lo revisamos en cada caso.",
+  },
+  {
+    titulo: "Las hernias de disco se reclaman.",
+    texto:
+      'Las hernias lumbosacras por vibraciones de cuerpo entero y por levantamiento de cargas están en el listado de enfermedades profesionales desde el Decreto 49/2014. La ART suele rechazarlas como "degenerativas"; después, en la Justicia, se reconoce su origen laboral.',
+  },
+  {
+    titulo: "El ruido y el polvo también enferman.",
+    texto:
+      "La hipoacusia por ruido y la silicosis son enfermedades profesionales típicas de la minería y dan derecho a indemnización.",
+  },
+  {
+    titulo: "El viaje a la mina está cubierto.",
+    texto:
+      "El accidente en el traslado entre tu casa y el trabajo es un accidente in itinere, incluido el viaje en el transporte de personal.",
+  },
+  {
+    titulo: "Contratista o minera, es lo mismo.",
+    texto:
+      "El reclamo se hace contra la ART de tu empleador, sea la empresa minera o una contratista.",
+  },
+  {
+    titulo: "Podés elegir dónde tramitar.",
+    texto:
+      "Si vivís en un departamento y trabajás en otro, la ley te deja elegir la Comisión Médica. Nosotros definimos cuál conviene.",
+  },
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LegalService",
+      "@id":
+        "https://www.marinpistachia.com/abogado-accidente-trabajo-san-juan/#legalservice",
+      name: "Marín Pistachia Abogados — San Juan",
+      url: "https://www.marinpistachia.com/abogado-accidente-trabajo-san-juan/",
+      image:
+        "https://www.marinpistachia.com/abogado-accidente-trabajo-san-juan/imgs/marin-hero-san-juan.webp",
+      description:
+        "¿Sufriste un accidente laboral en San Juan? Abogados especialistas en ART y minería. Reclamá tu indemnización. Consulta gratis, sin adelantos.",
+      telephone: "+54 9 264 639-9804",
+      priceRange: "Consulta gratuita",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Jujuy Norte 51",
+        addressLocality: "San Juan",
+        addressRegion: "San Juan",
+        addressCountry: "AR",
+      },
+      areaServed: [
+        { "@type": "City", name: "San Juan" },
+        { "@type": "City", name: "Rawson" },
+        { "@type": "City", name: "Rivadavia" },
+        { "@type": "City", name: "Chimbas" },
+        { "@type": "City", name: "Santa Lucía" },
+        { "@type": "City", name: "Pocito" },
+        { "@type": "City", name: "Caucete" },
+        { "@type": "City", name: "Jáchal" },
+        { "@type": "City", name: "Iglesia" },
+        { "@type": "City", name: "Calingasta" },
+        { "@type": "City", name: "Sarmiento" },
+      ],
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "18:00",
+      },
+      knowsAbout: [
+        "Accidentes de trabajo",
+        "Enfermedades profesionales",
+        "Reclamos a la ART",
+        "Accidentes en la minería",
+        "Comisiones Médicas SRT",
+      ],
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Inicio",
+          item: "https://www.marinpistachia.com/",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Abogados Accidentes de Trabajo San Juan",
+          item: "https://www.marinpistachia.com/abogado-accidente-trabajo-san-juan/",
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "¿Dónde queda la Comisión Médica en San Juan?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "La Comisión Médica N° 26 funciona en Bartolomé Mitre 224/226 Oeste, entre Sarmiento y Catamarca, en la ciudad de San Juan. Tiene competencia en las localidades de la circunscripción judicial San Juan, que abarca la capital, el Gran San Juan y la mayor parte de los departamentos de la provincia.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Hay Comisión Médica en Jáchal?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Sí. La Delegación Jáchal de la Comisión Médica N° 26 tiene asiento en 25 de Mayo 234, en el predio del Hospital San Roque. Tiene competencia en las localidades de la circunscripción judicial Jáchal y cumple las mismas funciones que la Comisión Médica de la capital: determina si el accidente o la enfermedad es laboral y fija el porcentaje de incapacidad.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Trabajo en una mina de Iglesia o Calingasta pero vivo en la capital. ¿Dónde hago el reclamo?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "La ley 27.348 le da la opción al trabajador: el trámite puede iniciarse en la Comisión Médica que corresponda a tu domicilio real, al lugar donde efectivamente prestás tareas o al domicilio donde habitualmente te reportás. En el trabajo minero esas tres opciones suelen caer en lugares distintos, así que nuestro estudio analiza en cada caso si conviene tramitar en San Juan capital o en Jáchal.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Trabajo para una contratista minera, no para la empresa dueña de la mina. ¿Puedo reclamar?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Sí. Lo que importa es que estés registrado y que tu empleador tenga ART: no cambia nada que la mina sea de otra empresa. El reclamo se dirige contra la ART de la contratista para la que trabajás. Si no estás registrado, también hay vías para reclamar; escribinos y lo vemos.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Está cubierto el accidente en el viaje a la mina o durante el roster?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "El accidente en el trayecto entre tu casa y el trabajo es un accidente in itinere y está cubierto por la ART, incluido el traslado en el transporte de personal hacia la cordillera. Los accidentes ocurridos en el campamento durante el régimen de turnos también pueden reclamarse como ocurridos en ocasión del trabajo.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Qué enfermedades profesionales son frecuentes en la minería?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: 'Las más habituales son la hipoacusia por exposición al ruido, la silicosis y otras enfermedades respiratorias por polvo de sílice, y las hernias de disco lumbosacras en quienes operan maquinaria con vibraciones de cuerpo entero o levantan cargas, incorporadas al listado de enfermedades profesionales por el Decreto 49/2014. La ART suele rechazarlas como "preexistentes" o "degenerativas", pero ese rechazo se puede discutir en la Comisión Médica y en la Justicia.',
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Qué pasa si la ART me dio el alta pero no estoy recuperado?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "El alta médica no significa necesariamente que estés curado ni que no tengas incapacidad. En esos casos se puede plantear una divergencia en el alta ante la Comisión Médica de San Juan o la Delegación Jáchal, reclamar las prestaciones médicas pendientes o iniciar el reclamo por incapacidad. Lo importante es actuar rápido y revisar si quedaron secuelas.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Cuánto puedo cobrar por una lesión laboral?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "El monto depende de tu salario, tu edad y el porcentaje de incapacidad. También influye cómo se calcula el ingreso base y si los sueldos fueron correctamente actualizados por RIPTE. En la minería las indemnizaciones suelen ser más altas por los sueldos del sector, siempre que el ingreso base incluya todos los adicionales que cobrás. Nuestra calculadora online sirve como estimación inicial, pero el monto final depende del caso concreto.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Tengo que pagar un abogado por adelantado para reclamar a la ART en San Juan?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. Trabajamos a resultado: cobramos un porcentaje solo si obtenés una indemnización. Podés iniciar el reclamo sin pagar gastos ni honorarios por adelantado; el honorario se paga al final, con el monto obtenido.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Cuánto tarda un reclamo de ART en San Juan?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Depende de la complejidad médica del caso, de los estudios necesarios y de la carga de trabajo de la Comisión Médica. La ley fija un plazo de 60 días hábiles administrativos para que la Comisión Médica se expida, prorrogable por cuestiones de hecho debidamente fundadas. Si ese plazo vence sin resolución, queda habilitada la vía judicial.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿La ART puede rechazar un accidente de trabajo o una enfermedad profesional?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: 'Sí, pero ese rechazo no siempre es correcto ni definitivo. En accidentes suele discutir si ocurrió en ocasión del trabajo o en el trayecto. En enfermedades suele sostener que la patología es "preexistente", "degenerativa" o ajena a la tarea. Frente al rechazo, se reclama ante la Comisión Médica y, si corresponde, se continúa ante la Justicia del Trabajo de San Juan.',
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Cuántos días tiene la ART para aceptar o rechazar un accidente?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "La ART tiene 10 días desde la denuncia para aceptar o rechazar el accidente o la enfermedad, con posibilidad de prorrogar ese plazo por otros 10 días. Si no rechaza expresamente dentro del plazo, la contingencia se considera aceptada. Por eso es importante conservar la denuncia, las notificaciones y toda la documentación médica.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "¿Hasta cuándo tengo tiempo para reclamar?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "El reclamo tiene un plazo de prescripción de 2 años. Cuanto antes consultes, más fácil es reunir la prueba médica y laboral.",
+          },
+        },
+      ],
+    },
+  ],
+};
+---
+
+<Layout
+  title="Abogados Accidentes de Trabajo San Juan | Consulta Gratis"
+  description="¿Sufriste un accidente laboral en San Juan? Abogados especialistas en ART y minería. Reclamá tu indemnización. Consulta gratis, sin adelantos."
+  canonical="https://www.marinpistachia.com/abogado-accidente-trabajo-san-juan/"
+  ogImage="https://www.marinpistachia.com/abogado-accidente-trabajo-san-juan/imgs/marin-hero-san-juan.webp"
+  ogLocale="es_AR"
+  structuredData={structuredData}
+>
+  <!-- Navbar -->
+  <Navbar
+    logoSrc="/abogado-accidente-trabajo-san-juan/imgs/logo-marin.webp"
+    logoAlt="Marín Pistachia Abogados"
+    waHref={waHref}
+  />
+
+  <!-- Hero -->
+  <Hero
+    ciudad="San Juan"
+    h1="¿Tuviste un accidente de trabajo en San Juan?"
+    subtitulo="<strong>Te ayudamos a cobrar</strong> lo que te corresponde."
+    intro="Somos abogados especialistas en accidentes laborales, enfermedades profesionales y reclamos a la ART, con oficina en San Juan. Atendemos a trabajadores de la minería y de todos los rubros de la provincia. <strong>Sin adelantos. Cobramos solo si ganás.</strong>"
+    waHref={waHref}
+    calcHref={calcHref}
+    heroImg="/abogado-accidente-trabajo-san-juan/imgs/marin-hero-san-juan.webp"
+    heroImgAlt="Estudio de abogados de accidentes de trabajo en San Juan"
+    telefono="264 639-9804"
+    telefonoHref={waHref}
+    oficina="Jujuy Norte 51, San Juan — Lun a Vie 9 a 18hs"
+    trustItems={[
+      "Consulta gratuita",
+      "Sin adelantos",
+      "Trabajo a resultado",
+      "Oficina en San Juan",
+    ]}
+  />
+
+  <!-- Stats -->
+  <Stats
+    items={[
+      {
+        value: "+20",
+        label: "Años de experiencia",
+        target: 20,
+        from: 0,
+        prefix: "+",
+      },
+      { value: "0", label: "Adelantos requeridos", target: 0, from: 10 },
+      { value: "6", label: "Ciudades en Argentina", target: 6, from: 0 },
+      {
+        value: "4.9",
+        label: "Valoración en Google",
+        target: 4.9,
+        from: 4.0,
+        decimals: 1,
+        suffix: "star",
+      },
+      {
+        value: "+8.000",
+        label: "Casos resueltos",
+        target: 8000,
+        from: 0,
+        prefix: "+",
+        thousands: ".",
+      },
+    ]}
+  />
+
+  <!-- Minería -->
+  <section id="mineria" class="relative overflow-hidden bg-brand py-20 lg:py-28">
+    <div
+      class="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-cyan/25 blur-3xl"
+    >
+    </div>
+    <m-container class="relative z-10">
+      <div class="mb-12 max-w-3xl">
+        <span class="text-sm font-bold text-[#20cde3] uppercase tracking-widest"
+          >Minería en San Juan</span
+        >
+        <h2
+          class="mt-4 text-3xl font-extrabold text-surface md:text-4xl lg:text-5xl uppercase tracking-wide"
+        >
+          Accidentes y enfermedades de trabajo en la minería sanjuanina
+        </h2>
+        <p class="mt-6 text-lg leading-relaxed text-surface/80">
+          San Juan es una de las principales provincias mineras del país. Miles
+          de sanjuaninos trabajan en la cordillera, en operaciones y proyectos
+          como Veladero, Gualcamayo, Hualilán, Casposo, Vicuña (Josemaría y Filo
+          del Sol), Los Azules y El Pachón, y en las caleras del sur de la
+          provincia. Es un trabajo bien pago, pero de alto riesgo: altura, turnos
+          largos, maquinaria pesada, ruido, polvo y caminos de montaña.
+        </p>
+        <p class="mt-4 text-lg leading-relaxed text-surface/80">
+          Si tuviste un accidente o te enfermaste trabajando en una mina, en una
+          planta o para una contratista, tenés derecho a reclamar una
+          indemnización a la ART. Y como la indemnización se calcula sobre tu
+          sueldo, en la minería cada punto de incapacidad vale mucho más.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          mineriaTarjetas.map((tarjeta) => (
+            <div class="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 lg:p-8">
+              <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-white/10">
+                <m-icon
+                  class="material-symbols-outlined text-3xl text-[#20cde3]"
+                  aria-hidden="true"
+                >
+                  {tarjeta.icon}
+                </m-icon>
+              </div>
+              <h3 class="mt-6 text-xl font-bold text-surface">
+                {tarjeta.titulo}
+              </h3>
+              <p class="mt-3 text-surface/75">{tarjeta.texto}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <ul class="mt-8 flex flex-wrap gap-2">
+        {
+          mineriaZonas.map((zona) => (
+            <li class="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-bold text-surface">
+              <m-icon
+                class="material-symbols-outlined text-[#20cde3]"
+                style="font-size:16px"
+                aria-hidden="true"
+              >
+                location_on
+              </m-icon>
+              {zona}
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-12 rounded-3xl bg-surface p-6 shadow-2xl md:p-10 lg:p-12">
+        <h3
+          class="text-2xl font-extrabold text-brand md:text-3xl uppercase tracking-wide"
+        >
+          Lo que hay que saber si trabajás en la minería
+        </h3>
+        <ul class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+          {
+            mineriaSaber.map((item) => (
+              <li class="flex items-start gap-3">
+                <m-icon
+                  class="material-symbols-outlined shrink-0 text-cyan"
+                  aria-hidden="true"
+                >
+                  check_circle
+                </m-icon>
+                <p class="text-gray-600">
+                  <strong class="text-brand">{item.titulo}</strong>{" "}
+                  {item.texto}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="mt-10">
+          <a
+            href={waHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-rosa px-8 py-4 text-base font-bold text-white shadow-lg shadow-rosa/40 transition-all hover:-translate-y-1 hover:bg-rosa/90 hover:shadow-xl hover:shadow-rosa/50 cursor-pointer text-balance"
+          >
+            <iconify-icon icon="simple-icons:whatsapp" width="20" height="20"
+            ></iconify-icon>
+            Consultá tu caso por WhatsApp
+          </a>
+        </div>
+      </div>
+    </m-container>
+  </section>
+
+  <!-- Comisiones Médicas -->
+  <section id="comisiones-medicas" class="bg-surface py-20 lg:py-28">
+    <m-container>
+      <div class="mb-16 text-center">
+        <span class="text-sm font-bold text-cyan uppercase tracking-widest"
+          >Dónde se tramita</span
+        >
+        <h2
+          class="mt-4 text-3xl font-extrabold text-brand md:text-4xl uppercase tracking-wide"
+        >
+          Las dos Comisiones Médicas de la provincia de San Juan
+        </h2>
+        <p class="mx-auto mt-6 max-w-3xl text-lg text-gray-600">
+          San Juan adhirió a la ley 27.348 mediante la Ley provincial 1.709-K.
+          Desde entonces, antes de ir a juicio, todo reclamo contra la ART tiene
+          que pasar por la Comisión Médica de la Superintendencia de Riesgos del
+          Trabajo, siempre con patrocinio de un abogado. En la provincia hay dos
+          sedes, y nuestro estudio actúa ante las dos.
+        </p>
+      </div>
+
+      <div class="rounded-2xl border border-brand/20 bg-brand/5 p-6 md:p-8">
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div class="rounded-xl border border-white bg-white p-5 shadow-sm">
+            <h3
+              class="text-xl font-extrabold text-brand flex items-center gap-1.5"
+            >
+              <m-icon class="material-symbols-outlined" aria-hidden="true"
+                >location_on</m-icon
+              > Comisión Médica N° 26 — San Juan
+            </h3>
+            <div class="mt-3 space-y-2 text-base text-gray-600">
+              <p>
+                <strong class="text-gray-800">Dirección:</strong> Bartolomé Mitre
+                224/226 Oeste, entre Sarmiento y Catamarca, ciudad de San Juan
+                (CP J5402CXF)
+              </p>
+              <p>
+                <strong class="text-gray-800">Competencia:</strong> Localidades de
+                la circunscripción judicial San Juan: capital, Gran San Juan y la
+                mayor parte de los departamentos de la provincia
+              </p>
+              <p>
+                <strong class="text-gray-800">A quién le sirve:</strong> Trabajadores
+                de la capital, Rawson, Rivadavia, Chimbas, Santa Lucía, Pocito, Caucete,
+                Sarmiento, Calingasta y demás departamentos
+              </p>
+              <p>
+                <strong class="text-gray-800">Qué se tramita:</strong> Rechazo de la
+                denuncia, divergencia en el alta, divergencia en las prestaciones,
+                determinación de la incapacidad y homologación de acuerdos
+              </p>
+            </div>
+          </div>
+
+          <div class="rounded-xl border border-white bg-white p-5 shadow-sm">
+            <h3
+              class="text-xl font-extrabold text-brand flex items-center gap-1.5"
+            >
+              <m-icon class="material-symbols-outlined" aria-hidden="true"
+                >subdirectory_arrow_right</m-icon
+              > Delegación Jáchal (CM N° 26)
+            </h3>
+            <div class="mt-3 space-y-2 text-base text-gray-600">
+              <p>
+                <strong class="text-gray-800">Dirección:</strong> 25 de Mayo 234,
+                predio del Hospital San Roque, San José de Jáchal (CP J5460)
+              </p>
+              <p>
+                <strong class="text-gray-800">Competencia:</strong> Localidades de
+                la circunscripción judicial Jáchal, en el norte de la provincia
+              </p>
+              <p>
+                <strong class="text-gray-800">A quién le sirve:</strong> Trabajadores
+                de Jáchal y del norte sanjuanino, zona de fuerte actividad minera
+              </p>
+              <p>
+                <strong class="text-gray-800">Qué se tramita:</strong> Los mismos
+                trámites: la Delegación cumple las mismas funciones que la Comisión
+                Médica de la que depende
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="mt-6 space-y-3 rounded-lg bg-brand/10 p-5 text-base font-medium text-brand"
+        >
+          <p>
+            ¿Cuál te corresponde? La ley te permite optar entre la Comisión
+            Médica de tu <strong>domicilio real</strong>, la del <strong
+              >lugar donde efectivamente trabajás</strong
+            > o la del <strong>domicilio donde habitualmente te reportás</strong>.
+            Un minero que vive en Rawson y trabaja en una mina del norte puede
+            tener más de una opción. Elegir bien la sede es parte de la
+            estrategia del reclamo.
+          </p>
+          <p>
+            La cita médica es presencial: el día de la audiencia te acompaña un
+            abogado del estudio, en San Juan capital o en Jáchal.
+          </p>
+        </div>
+      </div>
+    </m-container>
+  </section>
+
+  <!-- Sectores -->
+  <section id="sectores" class="py-20 lg:py-28">
+    <m-container>
+      <div class="mb-16 max-w-3xl">
+        <span class="text-sm font-bold text-cyan uppercase tracking-widest"
+          >Sectores laborales en San Juan</span
+        >
+        <h2
+          class="mt-4 text-3xl font-extrabold text-brand md:text-4xl lg:text-5xl uppercase tracking-wide"
+        >
+          Atendemos a trabajadores de todos los rubros de la provincia
+        </h2>
+        <p class="mt-6 text-lg text-gray-600">
+          Además de la minería, San Juan concentra actividades con alta
+          siniestralidad. Si trabajás en el campo, en una bodega, en la
+          construcción, en el transporte o en cualquier otro rubro y tuviste un
+          accidente o una enfermedad por tu trabajo, tenés derecho a reclamar una
+          indemnización a la ART.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <SectorCard
+          icon="agriculture"
+          titulo="Vitivinicultura y agro"
+          descripcion="Cosecha, poda, bodegas y galpones de empaque. Lesiones de columna por carga, lesiones de hombro y muñeca por tareas repetitivas, cortes y accidentes con maquinaria agrícola."
+          zonas="Pocito · Caucete · 25 de Mayo · Sarmiento"
+          href="https://www.marinpistachia.com/accidentado-trabajo-profesion/"
+          color="brand"
+        />
+        <SectorCard
+          icon="construction"
+          titulo="Construcción y obra pública"
+          descripcion="Caídas de altura, aplastamientos y fracturas. Uno de los rubros con mayor siniestralidad y con indemnizaciones significativas."
+          zonas="Gran San Juan · Rawson · Rivadavia · Chimbas"
+          href="https://www.marinpistachia.com/accidentado-trabajo-profesion/"
+          color="cyan"
+        />
+        <SectorCard
+          icon="local_shipping"
+          titulo="Transporte y logística"
+          descripcion="Choferes de camión y de transporte de personal. Hernias de disco cervicales y lumbares, accidentes de tránsito en servicio e in itinere. Reclamo a la ART y también a las aseguradoras."
+          zonas="Ruta 40 · Ruta 150 · Ruta 20"
+          href="https://www.marinpistachia.com/accidentado-trabajo-profesion/"
+          color="rosa"
+        />
+        <SectorCard
+          icon="electric_bolt"
+          titulo="Industria y energía"
+          descripcion="Operarios de planta, electricistas y personal de parques solares y centrales. Riesgo eléctrico, quemaduras, atrapamientos y amputaciones."
+          zonas="Parques industriales · Ullum · Sarmiento"
+          href="https://www.marinpistachia.com/accidentado-trabajo-profesion/"
+          color="brand"
+        />
+        <SectorCard
+          icon="local_hospital"
+          titulo="Salud y educación"
+          descripcion="Enfermeros, médicos y docentes. Lesiones de columna por movilización de pacientes, disfonía y exposición a agentes biológicos."
+          zonas="Hospitales · Clínicas · Escuelas"
+          href="https://www.marinpistachia.com/accidentado-trabajo-profesion/"
+          color="cyan"
+        />
+        <SectorCard
+          icon="storefront"
+          titulo="Comercio y servicios"
+          descripcion="Repositores, personal de depósito, limpieza y seguridad. Caídas, lesiones por carga y accidentes en el trayecto al trabajo."
+          zonas="Capital · Santa Lucía · Rawson"
+          href="https://www.marinpistachia.com/accidentado-trabajo-profesion/"
+          color="rosa"
+        />
+      </div>
+    </m-container>
+  </section>
+
+  <!-- Proceso -->
+  <section id="proceso" class="bg-surface py-20 lg:py-28">
+    <m-container>
+      <div class="mb-16 text-center">
+        <span class="text-sm font-bold text-cyan uppercase tracking-widest"
+          >Cómo trabajamos</span
+        >
+        <h2
+          class="mt-4 text-3xl font-extrabold text-brand md:text-4xl uppercase tracking-wide"
+        >
+          El proceso es simple. <br class="hidden sm:block" /> Nosotros nos encargamos
+          de todo.
+        </h2>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
+          Desde la primera consulta hasta que cobrás tu indemnización, te
+          acompañamos en cada paso.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <PasoCard
+          numero={1}
+          titulo="Consulta gratuita"
+          descripcion="Analizamos tu caso sin costo en nuestra oficina de Jujuy Norte 51, por WhatsApp, por teléfono o por videollamada si estás en la mina, en Jáchal, Iglesia, Calingasta o cualquier otro departamento. Te decimos si tenés derecho a cobrar y cuánto, sin compromiso."
+          color="brand"
+        />
+        <PasoCard
+          numero={2}
+          titulo="Reclamo a la ART"
+          descripcion="Presentamos el reclamo con nuestro patrocinio ante la Comisión Médica N° 26 de San Juan o ante la Delegación Jáchal, según lo que más te convenga, con toda la documentación médica y laboral necesaria."
+          color="cyan"
+        />
+        <PasoCard
+          numero={3}
+          titulo="Audiencia médica"
+          descripcion="Te acompañamos a la junta médica para defender tu porcentaje de incapacidad real. Esta etapa es clave: una diferencia de solo 1% puede ser de millones de pesos, y más todavía con sueldos mineros."
+          color="brand"
+        />
+        <PasoCard
+          numero={4}
+          titulo="Cobrás"
+          descripcion="Una vez homologada la indemnización, cobrás directo en tu cuenta. Solo entonces cobramos honorarios. Si el dictamen no refleja tu incapacidad, seguimos el reclamo ante la Justicia del Trabajo de San Juan."
+          color="rosa"
+        />
+      </div>
+    </m-container>
+  </section>
+
+  <!-- Lesiones -->
+  <LesionesSection
+    subtitulo="Lesiones y enfermedades más frecuentes"
+    titulo="¿Cuánto podés cobrar por tu lesión?"
+    descripcion="La indemnización depende de tu edad, tu sueldo y el porcentaje de incapacidad. Estas son las patologías más frecuentes que atendemos en San Juan."
+    lesiones={[
+      {
+        id: "hernia-disco",
+        emoji: "💥",
+        titulo: "Hernia de disco",
+        descripcion:
+          'Muy frecuente en operadores de camiones fuera de ruta, maquinistas y choferes. La ART suele rechazarla como "degenerativa", pero con abogado se puede cobrar.',
+        linkLabel: "Ver cuánto paga la ART",
+        linkHref:
+          "https://www.marinpistachia.com/news/accidentes-trabajo/art-hernia-disco/",
+      },
+      {
+        id: "manguito-rotador",
+        emoji: "💪",
+        titulo: "Manguito rotador",
+        descripcion:
+          "Lesión típica de mantenimiento mecánico, perforación y tareas con los brazos en alto. La ART intenta minimizar el porcentaje de incapacidad.",
+        linkLabel: "Ver cuánto paga la ART",
+        linkHref:
+          "https://www.marinpistachia.com/news/accidentes-trabajo/lesion-manguito-rotador/",
+      },
+      {
+        id: "rotura-ligamentos",
+        emoji: "🏃",
+        titulo: "Rotura de ligamentos",
+        descripcion:
+          "Frecuente en terrenos irregulares, taludes y trabajos en altura. La ART suele minimizar el porcentaje de incapacidad.",
+        linkLabel: "Ver cuánto paga la ART",
+        linkHref:
+          "https://www.marinpistachia.com/news/accidentes-trabajo/rotura-ligamentos/",
+      },
+      {
+        id: "meniscos",
+        emoji: "🦵",
+        titulo: "Meniscos",
+        descripcion:
+          "Lesión habitual en trabajadores con esfuerzo físico sostenido. Con abogado podés reclamar la incapacidad que la ART no reconoce.",
+        linkLabel: "Ver cuánto paga la ART",
+        linkHref:
+          "https://www.marinpistachia.com/news/accidentes-trabajo/meniscos/",
+      },
+      {
+        id: "amputacion-dedos",
+        emoji: "🖐️",
+        titulo: "Amputación de dedos",
+        descripcion:
+          "Muy común en plantas de procesamiento, cintas transportadoras y maquinaria industrial. Indemnizaciones elevadas según la cantidad de falanges perdidas.",
+        linkLabel: "Ver cuánto paga la ART",
+        linkHref:
+          "https://www.marinpistachia.com/news/accidentes-trabajo/amputacion-dedo-art/",
+      },
+      {
+        id: "fracturas",
+        emoji: "🦴",
+        titulo: "Fracturas",
+        descripcion:
+          "Caídas de altura, golpes con objetos, atrapamientos y vuelcos. El porcentaje de incapacidad depende del hueso afectado y de la secuela.",
+        linkLabel: "Ver cuánto paga la ART",
+        chips: [
+          {
+            label: "Tibia y peroné",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-tibia-perone/",
+            srText: " — Ver cuánto paga la ART por fractura de tibia y peroné",
+          },
+          {
+            label: "Radio",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-radio-art/",
+            srText: " — Ver cuánto paga la ART por fractura de radio",
+          },
+          {
+            label: "Cúbito",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-cubito/",
+            srText: " — Ver cuánto paga la ART por fractura de cúbito",
+          },
+          {
+            label: "Húmero",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-humero/",
+            srText: " — Ver cuánto paga la ART por fractura de húmero",
+          },
+          {
+            label: "Dedo",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/art-fractura-dedo/",
+            srText: " — Ver cuánto paga la ART por fractura de dedo",
+          },
+          {
+            label: "Fémur",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-femur/",
+            srText: " — Ver cuánto paga la ART por fractura de fémur",
+          },
+          {
+            label: "Cadera / Pelvis",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-pelvis/",
+            srText: " — Ver cuánto paga la ART por fractura de cadera y pelvis",
+          },
+          {
+            label: "Calcáneo",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-de-calcaneo-cuanto-paga-la-art-2/",
+            srText: " — Ver cuánto paga la ART por fractura de calcáneo",
+          },
+          {
+            label: "Muñeca",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/indemnizacion-muneca/",
+            srText: " — Ver cuánto paga la ART por fractura de muñeca",
+          },
+          {
+            label: "Vértebra",
+            href: "https://www.marinpistachia.com/news/accidentes-trabajo/fractura-vertebra/",
+            srText: " — Ver cuánto paga la ART por fractura de vértebra",
+          },
+        ],
+      },
+    ]}
+  />
+
+  <!-- FAQ -->
+  <FAQ
+    items={[
+      {
+        pregunta: "¿Dónde queda la Comisión Médica en San Juan?",
+        respuesta: `<p>La Comisión Médica N° 26 funciona en Bartolomé Mitre 224/226 Oeste, entre Sarmiento y Catamarca, en la ciudad de San Juan. Tiene competencia en las localidades de la circunscripción judicial San Juan, que abarca la capital, el Gran San Juan y la mayor parte de los departamentos de la provincia.</p>`,
+      },
+      {
+        pregunta: "¿Hay Comisión Médica en Jáchal?",
+        respuesta: `<p>Sí. La Delegación Jáchal de la Comisión Médica N° 26 tiene asiento en 25 de Mayo 234, en el predio del Hospital San Roque. Tiene competencia en las localidades de la circunscripción judicial Jáchal y cumple las mismas funciones que la Comisión Médica de la capital: determina si el accidente o la enfermedad es laboral y fija el porcentaje de incapacidad.</p>`,
+      },
+      {
+        pregunta:
+          "Trabajo en una mina de Iglesia o Calingasta pero vivo en la capital. ¿Dónde hago el reclamo?",
+        respuesta: `<p>La ley 27.348 le da la opción al trabajador: el trámite puede iniciarse en la Comisión Médica que corresponda a tu domicilio real, al lugar donde efectivamente prestás tareas o al domicilio donde habitualmente te reportás. En el trabajo minero esas tres opciones suelen caer en lugares distintos, así que nuestro estudio analiza en cada caso si conviene tramitar en San Juan capital o en Jáchal.</p>`,
+      },
+      {
+        pregunta:
+          "Trabajo para una contratista minera, no para la empresa dueña de la mina. ¿Puedo reclamar?",
+        respuesta: `<p>Sí. Lo que importa es que estés registrado y que tu empleador tenga ART: no cambia nada que la mina sea de otra empresa. El reclamo se dirige contra la ART de la contratista para la que trabajás. Si no estás registrado, también hay vías para reclamar; escribinos y lo vemos.</p>`,
+      },
+      {
+        pregunta:
+          "¿Está cubierto el accidente en el viaje a la mina o durante el roster?",
+        respuesta: `<p>El accidente en el trayecto entre tu casa y el trabajo es un accidente in itinere y está cubierto por la ART, incluido el traslado en el transporte de personal hacia la cordillera. Los accidentes ocurridos en el campamento durante el régimen de turnos también pueden reclamarse como ocurridos en ocasión del trabajo.</p>`,
+      },
+      {
+        pregunta: "¿Qué enfermedades profesionales son frecuentes en la minería?",
+        respuesta: `<p>Las más habituales son la hipoacusia por exposición al ruido, la silicosis y otras enfermedades respiratorias por polvo de sílice, y las hernias de disco lumbosacras en quienes operan maquinaria con vibraciones de cuerpo entero o levantan cargas, incorporadas al listado de enfermedades profesionales por el Decreto 49/2014. La ART suele rechazarlas como "preexistentes" o "degenerativas", pero ese rechazo se puede discutir en la Comisión Médica y en la Justicia.</p>`,
+      },
+      {
+        pregunta: "¿Qué pasa si la ART me dio el alta pero no estoy recuperado?",
+        respuesta: `<p>El alta médica no significa necesariamente que estés curado ni que no tengas incapacidad. En esos casos se puede plantear una divergencia en el alta ante la Comisión Médica de San Juan o la Delegación Jáchal, reclamar las prestaciones médicas pendientes o iniciar el reclamo por incapacidad. Lo importante es actuar rápido y revisar si quedaron secuelas.</p>`,
+      },
+      {
+        pregunta: "¿Cuánto puedo cobrar por una lesión laboral?",
+        respuesta: `<p>El monto depende de tu salario, tu edad y el porcentaje de incapacidad. También influye cómo se calcula el ingreso base y si los sueldos fueron correctamente actualizados por RIPTE. En la minería las indemnizaciones suelen ser más altas por los sueldos del sector, siempre que el ingreso base incluya todos los adicionales que cobrás. <a href="https://www.marinpistachia.com/calculadora-indemnizacion-accidente-trabajo/" target="_blank" rel="noopener noreferrer" class="underline font-semibold text-cyan hover:text-cyan/80">Nuestra calculadora online</a> sirve como estimación inicial, pero el monto final depende del caso concreto.</p>`,
+      },
+      {
+        pregunta:
+          "¿Tengo que pagar un abogado por adelantado para reclamar a la ART en San Juan?",
+        respuesta: `<p>No. Trabajamos a resultado: cobramos un porcentaje solo si obtenés una indemnización. Podés iniciar el reclamo sin pagar gastos ni honorarios por adelantado; el honorario se paga al final, con el monto obtenido.</p>`,
+      },
+      {
+        pregunta: "¿Cuánto tarda un reclamo de ART en San Juan?",
+        respuesta: `<p>Depende de la complejidad médica del caso, de los estudios necesarios y de la carga de trabajo de la Comisión Médica. La ley fija un plazo de 60 días hábiles administrativos para que la Comisión Médica se expida, prorrogable por cuestiones de hecho debidamente fundadas. Si ese plazo vence sin resolución, queda habilitada la vía judicial.</p>`,
+      },
+      {
+        pregunta:
+          "¿La ART puede rechazar un accidente de trabajo o una enfermedad profesional?",
+        respuesta: `<p>Sí, pero ese rechazo no siempre es correcto ni definitivo. En accidentes suele discutir si ocurrió en ocasión del trabajo o en el trayecto. En enfermedades suele sostener que la patología es "preexistente", "degenerativa" o ajena a la tarea. Frente al rechazo, se reclama ante la Comisión Médica y, si corresponde, se continúa ante la Justicia del Trabajo de San Juan.</p>`,
+      },
+      {
+        pregunta:
+          "¿Cuántos días tiene la ART para aceptar o rechazar un accidente?",
+        respuesta: `<p>La ART tiene 10 días desde la denuncia para aceptar o rechazar el accidente o la enfermedad, con posibilidad de prorrogar ese plazo por otros 10 días. Si no rechaza expresamente dentro del plazo, la contingencia se considera aceptada. Por eso es importante conservar la denuncia, las notificaciones y toda la documentación médica.</p>`,
+      },
+      {
+        pregunta: "¿Hasta cuándo tengo tiempo para reclamar?",
+        respuesta: `<p>El reclamo tiene un plazo de prescripción de 2 años. Cuanto antes consultes, más fácil es reunir la prueba médica y laboral.</p>`,
+      },
+    ]}
+  />
+
+  <!-- Reviews -->
+  <Reviews />
+
+  <!-- CTA Final -->
+  <CTAFinal
+    titulo="¿Tuviste un accidente laboral en San Juan?"
+    subtitulo="No esperes más. El reclamo tiene un plazo de 2 años. Consultanos gratis ahora."
+    phones={[
+      {
+        label: "WhatsApp San Juan",
+        href: waHref,
+        icon: "simple-icons:whatsapp",
+        iconType: "iconify",
+      },
+      {
+        label: "0800-888-7708",
+        href: "tel:08008887708",
+        icon: "support_agent",
+      },
+    ]}
+    links={[
+      {
+        label: "Calculá tu indemnización",
+        href: calcHref,
+        icon: "calculate",
+        iconType: "material",
+      },
+    ]}
+  />
+
+  <!-- Footer -->
+  <Footer
+    logoSrc="/abogado-accidente-trabajo-san-juan/imgs/logo-marin.webp"
+    logoAlt="Marín Pistachia Abogados"
+    copyright='© 2026 Marín Pistachia Abogados — San Juan · Jujuy Norte 51, San Juan<br><span class="text-xs">Ignacio Marín — Matrícula Foro de Abogados de San Juan 5936; Matrícula Corte Suprema de Justicia de la Nación Folio 19 Tomo 401</span>'
+    socialLinks={[
+      {
+        icon: "simple-icons:facebook",
+        href: "https://www.facebook.com/mypabogados/",
+        label: "Facebook",
+      },
+      {
+        icon: "simple-icons:tiktok",
+        href: "https://www.tiktok.com/@marin.pistachia",
+        label: "TikTok",
+      },
+      {
+        icon: "simple-icons:x",
+        href: "https://twitter.com/myp_abogados",
+        label: "X (Twitter)",
+      },
+      {
+        icon: "simple-icons:instagram",
+        href: "https://www.instagram.com/marinpistachia11/",
+        label: "Instagram",
+      },
+      {
+        icon: "simple-icons:youtube",
+        href: "https://www.youtube.com/@MarinPistachiaAbogados",
+        label: "YouTube",
+      },
+    ]}
+  />
+
+  <!-- WA Button -->
+  <WAButton href={waHref} />
+</Layout>

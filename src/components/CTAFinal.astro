@@ -3,6 +3,7 @@ interface PhoneItem {
   label: string;
   href: string;
   icon: string;
+  iconType?: 'material' | 'iconify';
 }
 
 interface LinkItem {
@@ -41,7 +42,11 @@ const { titulo, subtitulo, phones, links } = Astro.props;
             target="_blank"
             class="flex items-center gap-2 rounded-xl bg-rosa px-8 py-4 text-lg font-bold text-white shadow-lg shadow-rosa/40 transition-all hover:-translate-y-1 hover:bg-rosa/90 hover:shadow-xl cursor-pointer"
           >
-            <m-icon class="material-symbols-outlined">{phone.icon}</m-icon>
+            {phone.iconType === 'iconify' ? (
+              <iconify-icon icon={phone.icon} width="24" height="24"></iconify-icon>
+            ) : (
+              <m-icon class="material-symbols-outlined">{phone.icon}</m-icon>
+            )}
             {phone.label}
           </a>
         ) : (
@@ -50,7 +55,11 @@ const { titulo, subtitulo, phones, links } = Astro.props;
             target="_blank"
             class="flex items-center gap-2 rounded-xl border-2 border-white bg-transparent px-8 py-4 text-lg font-bold text-white transition-all hover:bg-white hover:text-brand cursor-pointer"
           >
-            <m-icon class="material-symbols-outlined">{phone.icon}</m-icon>
+            {phone.iconType === 'iconify' ? (
+              <iconify-icon icon={phone.icon} width="24" height="24"></iconify-icon>
+            ) : (
+              <m-icon class="material-symbols-outlined">{phone.icon}</m-icon>
+            )}
             {phone.label}
           </a>
         )

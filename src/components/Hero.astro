@@ -110,6 +110,7 @@ const [direccion, horario] = oficina.split(' — ');
             <div class="flex gap-2 mb-3">
               <a
                 href={telefonoHref}
+                {...(telefonoHref.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 class="flex items-center justify-center gap-1.5 rounded-lg bg-surface/20 backdrop-blur-sm px-4 py-2 text-sm font-bold text-surface hover:bg-surface/30 transition-colors"
               >
                 <iconify-icon icon="simple-icons:whatsapp" width="16" height="16"></iconify-icon>
