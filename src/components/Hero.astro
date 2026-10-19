@@ -38,7 +38,7 @@ const [direccion, horario] = oficina.split(' — ');
   <m-container class="relative z-10">
     <m-row class="flex-col items-center gap-12 lg:flex-row lg:gap-16">
 
-      <!-- Text Content — segundo en mobile, primero en desktop -->
+      {/* Text Content — segundo en mobile, primero en desktop */}
       <m-col class="flex-1 flex flex-col items-start gap-6 order-2 lg:order-1">
         <span class="inline-flex items-center gap-2 rounded-full bg-brand/10 px-4 py-2 text-sm font-bold tracking-wide text-brand uppercase">
           <m-icon class="material-symbols-outlined text-base">location_on</m-icon>
@@ -92,7 +92,7 @@ const [direccion, horario] = oficina.split(' — ');
         )}
       </m-col>
 
-      <!-- Image — primero en mobile, segundo en desktop -->
+      {/* Image — primero en mobile, segundo en desktop */}
       <m-col class="flex-1 w-full relative order-1 lg:order-2">
         <div class="relative overflow-hidden rounded-3xl shadow-2xl">
           <img
@@ -106,7 +106,7 @@ const [direccion, horario] = oficina.split(' — ');
             <p class="mb-1 text-lg font-extrabold uppercase tracking-wide text-surface">Consultanos ahora</p>
             <p class="mb-4 text-sm text-surface/80">Analizamos tu caso sin costo y te decimos si tenés derecho a cobrar.</p>
 
-            <!-- Botones en fila -->
+            {/* Botones en fila */}
             <div class="flex gap-2 mb-3">
               <a
                 href={telefonoHref}
@@ -125,7 +125,7 @@ const [direccion, horario] = oficina.split(' — ');
               </a>
             </div>
 
-            <!-- Dirección y horario en una fila -->
+            {/* Dirección y horario en una fila */}
             <div class="flex items-center gap-3 flex-wrap">
               <p class="flex items-center gap-1 text-xs text-surface/70">
                 <m-icon class="material-symbols-outlined" style="font-size: 14px;">location_on</m-icon>
